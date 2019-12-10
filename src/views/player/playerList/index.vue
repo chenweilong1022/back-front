@@ -199,6 +199,7 @@ export default {
     this.query()
   },
   methods: {
+    // 查询
     query() {
       this.listLoading = true
       this.$store.dispatch('ListPlayerAccountByQry', this.filterForm).then(resp => {
