@@ -213,6 +213,42 @@ const robotManager = {
           reject(error)
         })
       })
+    },
+    ListRobotControl({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        Api.listRobotControl(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    SaveRobotControl({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        Api.saveRobotControl(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    UpdateRobotControl({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        Api.updateRobotControl(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    DeleteRobotControl({ commit }, id) {
+      return new Promise((resolve, reject) => {
+        Api.deleteRobotControl(id).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
     }
   },
 

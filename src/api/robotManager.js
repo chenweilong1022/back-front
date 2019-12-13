@@ -191,3 +191,46 @@ export function updateRobotConfig(data) {
     data: data
   })
 }
+
+export function listRobotControl(data) {
+  return request({
+    url: '/robots/listRobotControl',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: data
+  })
+}
+
+export function saveRobotControl(data) {
+  return request({
+    url: '/robots/saveRobotControl',
+    method: 'post',
+    headers: {
+      'api-version': 'v2'
+    },
+    data: data
+  })
+}
+
+export function updateRobotControl(data) {
+  return request({
+    url: '/robots/updateRobotControl',
+    method: 'put',
+    headers: {
+      'api-version': 'v2'
+    },
+    data: data
+  })
+}
+
+export function deleteRobotControl(id) {
+  return request({
+    url: '/robots/deleteRobotControl/' + id,
+    method: 'delete',
+    headers: {
+      'api-version': 'v2'
+    },
+  })
+}
