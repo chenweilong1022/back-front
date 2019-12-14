@@ -79,3 +79,14 @@ export function listManageLogByQry(data) {
     data: data
   })
 }
+
+export function authenticate(data) {
+  return request({
+    url: '/zdconfig/tblipwhitelist/authenticate',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: data
+  })
+}

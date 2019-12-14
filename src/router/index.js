@@ -462,7 +462,7 @@ export const asyncRouterMap = [
         component: () => import('@/views/robotManager/robotcontrol'),
         meta: {
           title: '机器人控制端',
-          path: '/player/robotManage',
+          path: '/player/robotcontrol',
           auth: true
         }
       },
@@ -588,6 +588,26 @@ export const asyncRouterMap = [
         meta: {
           title: '注册留存率',
           path: '/platform/regAliveCount',
+          auth: true
+        }
+      },
+      {
+        path: 'recordAccountOnlinePlaying',
+        name: 'recordAccountOnlinePlaying',
+        component: () => import('@/views/platform/recordAccountOnlinePlaying'),
+        meta: {
+          title: '在线在玩统计',
+          path: '/platform/recordAccountOnlinePlaying',
+          auth: true
+        }
+      },
+      {
+        path: 'demo',
+        name: 'demo',
+        component: () => import('@/views/platform/demo'),
+        meta: {
+          title: 'demo',
+          path: '/platform/demo',
           auth: true
         }
       }

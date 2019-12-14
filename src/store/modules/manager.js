@@ -73,6 +73,15 @@ const manager = {
           reject(error)
         })
       })
+    },
+    Authenticate({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.authenticate(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
     }
   }
 }

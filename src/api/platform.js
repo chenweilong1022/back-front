@@ -336,3 +336,13 @@ export function uploadImage(data) {
     data: data
   })
 }
+
+export function listAllRecordAccountOnlinePlaying(data) {
+  return request({
+    url: '/platform/tblrecordaccountonlineplaying/listAllRecordAccountOnlinePlaying',
+    method: 'get',
+    headers: {
+      'api-version': 'v1'
+    }
+  })
+}

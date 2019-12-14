@@ -286,7 +286,16 @@ const platform = {
           reject(err)
         })
       })
-    }
+    },
+    ListAllRecordAccountOnlinePlaying({ commit }, query) {
+      return new Promise((resolve, reject) => {
+        PlatformApi.listAllRecordAccountOnlinePlaying(query).then(resp => {
+          resolve(resp)
+        }).catch(err => {
+          reject(err)
+        })
+      })
+    },
   }
 }
 
