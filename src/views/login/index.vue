@@ -24,14 +24,19 @@
         </span>
       </el-form-item>
       <el-form-item>
+        <el-input
+          v-model="loginForm.googleCode"
+          name="googleCode"
+          auto-complete="on"
+          placeholder="谷歌验证码"
+          @keyup.enter.native="handleLogin" />
+      </el-form-item>
+
+      <el-form-item>
         <el-button :loading="loading" type="primary" style="width:100%;" @click.native.prevent="handleLogin">
           登 录
         </el-button>
       </el-form-item>
-      <!--<div class="tips">-->
-        <!--<span style="margin-right:20px;">username: admin</span>-->
-        <!--<span> password: admin</span>-->
-      <!--</div>-->
     </el-form>
   </div>
 </template>
@@ -60,7 +65,8 @@ export default {
         // username: 'administ',
         // password: '123456789qaz'
         username: '',
-        password: ''
+        password: '',
+        googleCode: ''
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],

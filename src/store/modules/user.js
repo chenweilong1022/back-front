@@ -40,14 +40,14 @@ const user = {
   actions: {
     // 登录
     Login({ commit }, userInfo) {
-      const username = userInfo.username.trim()
+      // const username = userInfo.username.trim()
 
       // 获取用户真实IP
       getIPs(function(ip) {
         userInfo.userIP = ip
       })
       return new Promise((resolve, reject) => {
-        login(username, userInfo.password, userInfo.userIP).then(response => {
+        login(userInfo).then(response => {
           const data = response.data
           setToken(data.token)
           setManagerId(data.manageid)

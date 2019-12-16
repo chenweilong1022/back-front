@@ -1,17 +1,13 @@
 import request from '@/utils/request'
 
-export function login(username, password, userIP) {
+export function login(userInfo) {
   return request({
     url: '/managers/login',
     method: 'post',
     headers: {
       'api-version': 'v1'
     },
-    data: {
-      username,
-      password,
-      userIP
-    }
+    data: userInfo
   })
 }
 

@@ -231,6 +231,6 @@ export function deleteRobotControl(id) {
     method: 'delete',
     headers: {
       'api-version': 'v2'
-    },
+    }
   })
 }

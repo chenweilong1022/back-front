@@ -600,16 +600,6 @@ export const asyncRouterMap = [
           path: '/platform/recordAccountOnlinePlaying',
           auth: true
         }
-      },
-      {
-        path: 'demo',
-        name: 'demo',
-        component: () => import('@/views/platform/demo'),
-        meta: {
-          title: 'demo',
-          path: '/platform/demo',
-          auth: true
-        }
       }
     ]
   },
