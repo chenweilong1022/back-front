@@ -90,3 +90,13 @@ export function authenticate(data) {
     data: data
   })
 }
+
+export function indexCard1() {
+  return request({
+    url: '/index/indexCard',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    }
+  })
+}

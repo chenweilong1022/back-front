@@ -82,7 +82,16 @@ const manager = {
           reject(error)
         })
       })
-    }
+    },
+    IndexCard({ commit }) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.indexCard1().then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
   }
 }
 

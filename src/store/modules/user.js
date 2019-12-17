@@ -111,7 +111,6 @@ const user = {
         })
       })
     },
-
     // 前端 登出
     FedLogOut({ commit }) {
       return new Promise(resolve => {
