@@ -13,6 +13,11 @@
         </div>
       </el-col>
     </el-row>
+
+    <!--<record-account-online-playing ref="recordAccountOnlinePlaying"></record-account-online-playing>-->
+
+    <player-online-statistics ref="playerOnlineStatistics"></player-online-statistics>
+
   </div>
 </template>
 
@@ -20,11 +25,13 @@
 import { mapGetters } from 'vuex'
 // import adminDashboard from './admin'
 import adminMonitor from './monitor'
+import playerOnlineStatistics from '@/views/index/playerOnlineStatistics'
 
 export default {
   name: 'Dashboard',
   components: {
-    adminMonitor
+    adminMonitor,
+    playerOnlineStatistics
   },
   data() {
     return {

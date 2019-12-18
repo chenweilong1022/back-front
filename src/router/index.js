@@ -600,6 +600,16 @@ export const asyncRouterMap = [
           path: '/platform/recordAccountOnlinePlaying',
           auth: true
         }
+      },
+      {
+        path: 'playerOnlineStatistics',
+        name: 'playerOnlineStatistics',
+        component: () => import('@/views/index/playerOnlineStatistics'),
+        meta: {
+          title: '玩家在线走势',
+          path: '/platform/recordAccountOnlinePlaying',
+          auth: true
+        }
       }
     ]
   },

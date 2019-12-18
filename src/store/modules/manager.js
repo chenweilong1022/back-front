@@ -92,6 +92,24 @@ const manager = {
         })
       })
     },
+    PlayerOnlineStatistics({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.playerOnlineStatistics1(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      }, 10000)
+    },
+    PlayerOnlineStatisticsButtons({ commit }) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.playerOnlineStatisticsButtons().then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    }
   }
 }
 

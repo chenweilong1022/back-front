@@ -100,3 +100,25 @@ export function indexCard1() {
     }
   })
 }
+
+export function playerOnlineStatistics1(data) {
+  return request({
+    url: '/index/playerOnlineStatistics',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: data
+  })
+}
+
+export function playerOnlineStatisticsButtons(data) {
+  return request({
+    url: '/index/playerOnlineStatisticsButtons',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: data
+  })
+}
