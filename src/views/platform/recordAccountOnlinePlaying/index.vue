@@ -12,7 +12,7 @@
     <el-row :gutter="20">
       <el-col :span="24">
         <el-card>
-          <div id="J_chartLineBox" class="chart-box"></div>
+          <div id="J_chartLineBox3" class="chart-box"></div>
         </el-card>
       </el-col>
     </el-row>
@@ -75,7 +75,7 @@
             'trigger': 'axis'
           },
           'legend': {
-            'data': [ '在玩', '在线' ]
+            'data': [ '在线', '在玩' ]
           },
           'grid': {
             'left': '3%',
@@ -100,18 +100,16 @@
             {
               'name': '在线',
               'type': 'line',
-              'stack': '总量',
               'data': this.onlineList
             },
             {
               'name': '在玩',
               'type': 'line',
-              'stack': '总量',
               'data': this.playingList
             }
           ]
         }
-        this.chartLine = echarts.init(document.getElementById('J_chartLineBox'))
+        this.chartLine = echarts.init(document.getElementById('J_chartLineBox3'))
         this.chartLine.setOption(option)
         window.addEventListener('resize', () => {
           this.chartLine.resize()

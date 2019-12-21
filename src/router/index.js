@@ -610,6 +610,46 @@ export const asyncRouterMap = [
           path: '/platform/recordAccountOnlinePlaying',
           auth: true
         }
+      },
+      {
+        path: 'accountLoginEverydayStatistics',
+        name: 'accountLoginEverydayStatistics',
+        component: () => import('@/views/index/accountLoginEverydayStatistics'),
+        meta: {
+          title: '平台登录用户数',
+          path: '/index/accountLoginEverydayStatistics',
+          auth: true
+        }
+      },
+      {
+        path: 'accountRegisterEverydayStatistics',
+        name: 'accountRegisterEverydayStatistics',
+        component: () => import('@/views/index/accountRegisterEverydayStatistics'),
+        meta: {
+          title: '平台注册用户数',
+          path: '/index/accountRegisterEverydayStatistics',
+          auth: true
+        }
+      },
+      {
+        path: 'rechargeAmountStatistics',
+        name: 'rechargeAmountStatistics',
+        component: () => import('@/views/index/rechargeAmountStatistics'),
+        meta: {
+          title: '平台充值金额',
+          path: '/index/rechargeAmountStatistics',
+          auth: true
+        }
+      },
+      {
+        path: 'totalGoldEverydayStatistics',
+        name: 'totalGoldEverydayStatistics',
+        component: () => import('@/views/index/totalGoldEverydayStatistics'),
+        meta: {
+          title: '平台总金币走势',
+          path: '/index/totalGoldEverydayStatistics',
+          auth: true
+        }
       }
     ]
   },

@@ -34,6 +34,11 @@
           {{ scope.row.key }}
         </template>
       </el-table-column>
+      <el-table-column align="center" label="secret">
+        <template slot-scope="scope">
+          {{ scope.row.secret }}
+        </template>
+      </el-table-column>
       <el-table-column align="center" label="ip">
         <template slot-scope="scope">
           {{ scope.row.ip }}
@@ -57,7 +62,7 @@
     </div>
 
     <el-dialog :visible.sync="dialogNewOrEditVisible" :title="newFlag | dialogTitle" width="600px">
-      <el-form ref="sysrobotcontrolForm" :model="robotcontrol" :rules="robotcontrolRules" label-width="100px">
+      <el-form ref="robotControlForm" :model="robotcontrol" :rules="robotcontrolRules" label-width="100px">
         <el-form-item label="名称" prop="name">
           <el-input v-model="robotcontrol.name" />
         </el-form-item>
@@ -126,10 +131,9 @@ export default {
     showNewPage() {
       this.newFlag = true
       this.resetForm()
-      this.sysDomain = {
-        domain: null,
-        enabled: 1,
-        note: null
+      this.robotcontrol = {
+        name: '',
+        ip: null
       }
       this.dialogNewOrEditVisible = true
     },
@@ -139,7 +143,7 @@ export default {
       this.dialogNewOrEditVisible = true
     },
     saverobotcontrol() {
-      this.$refs['sysrobotcontrolForm'].validate(valid => {
+      this.$refs['robotControlForm'].validate(valid => {
         if (valid) {
           this.$confirm('是否确定保存?', '提示', {
             confirmButtonText: '确定',
@@ -179,7 +183,7 @@ export default {
       })
     },
     resetForm() {
-      this.$refs['sysrobotcontrolForm'] && this.$refs['sysrobotcontrolForm'].clearValidate()
+      this.$refs['robotControlForm'] && this.$refs['robotControlForm'].clearValidate()
     },
     handleSizeChange(val) {
       this.filterForm.pageSize = val

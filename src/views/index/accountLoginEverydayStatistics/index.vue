@@ -1,19 +1,24 @@
 <template>
   <div class="mod-demo-echarts">
     <div class="echartsTitle">
-    <div>游戏玩家在线走势</div>
+    <div>平台-登录用户数</div>
     <div>时间: {{startTime}}-{{endTime}}</div>
   </div>
     <div class="echartsChoose">
       <el-button-group>
         <el-button :type="key == button.key ? 'primary' : ''" v-for="button in buttons" @click="playerOnlineStatisticsQuery(button)">{{button.value}}</el-button>
       </el-button-group>
+
+      <el-button-group class="group2">
+        <el-button :type="type == 1 ? 'primary' : ''" @click="accountLoginType(1)" >登录方式</el-button>
+        <el-button :type="type == 2 ? 'primary' : ''" @click="accountLoginType(2)" >登录类型</el-button>
+      </el-button-group>
     </div>
     <div class="echarts">
     <el-row :gutter="20">
       <el-col :span="24">
         <el-card>
-          <div id="J_chartLineBox" class="chart-box"></div>
+          <div id="J_chartBarBox" class="chart-box"></div>
         </el-card>
       </el-col>
     </el-row>
@@ -26,8 +31,8 @@
   export default {
     data () {
       return {
-        key: '',
-        chartLine: null,
+        autofocus: true,
+        chartBar: null,
         list: [],
         legendDatas: [],
         xAxis:[],
@@ -35,16 +40,18 @@
         buttons: [],
         startTime: '',
         endTime: '',
+        key: '',
+        type: ''
       }
     },
     mounted () {
-      this.initData('1')
+      this.initData('1', 1)
       this.initButton()
     },
     activated () {
       // 由于给echart添加了resize事件, 在组件激活时需要重新resize绘画一次, 否则出现空白bug
-      if (this.chartLine) {
-        this.chartLine.resize()
+      if (this.chartBar) {
+        this.chartBar.resize()
       }
     },
     methods: {
@@ -55,81 +62,72 @@
         }).catch(() => {
         })
       },
-      initData(key) {
+      initData(key, type) {
         this.key = key
+        this.type = type
         this.legendDatas = []
-        this.xAxis = []
         this.series = []
-        console.log('开始')
-        this.$store.dispatch('PlayerOnlineStatistics', { key: key }).then(resp => {
+        this.$store.dispatch('AccountLoginRegistrEverydayStatistics', { key: key, type: type }).then(resp => {
 
+          this.xAxis = resp.data.dateTimes
           this.startTime = resp.data.startTime
           this.endTime = resp.data.endTime
-
-          for (let value of resp.data.dateTimes) {
-            this.legendDatas.push(value)
-          }
-
-          for (let value of resp.data.playerOnlineStatisticsVos) {
-            this.xAxis.push(value.date)
-            const serie = {};
-            serie.name = value.date
-            serie.type = 'line'
-            // serie.stack = '总量'
-            serie.data = value.list
+          for (const value of resp.data.accountLoginEverydayStatisticsVos) {
+            this.legendDatas.push(value.accountLoginWay)
+            const serie = {}
+            serie.name = value.accountLoginWay
+            serie.type = 'bar'
+            serie.stack = '总量'
+            serie.data = value.counts
             this.series.push(serie)
           }
-
-          console.log(this.legendDatas)
-          console.log(this.series)
-          console.log(this.xAxis)
-          this.initChartLine()
-          this.chartLine.resize()
+          this.initChartBar()
         }).catch(() => {
         })
       },
-      playerOnlineStatisticsQuery(button) {
-        this.initData(button.key)
+      accountLoginType(type) {
+        this.initData(this.key, type)
+      },
+      playerOnlineStatisticsQuery(button, obj) {
+        this.initData(button.key, this.type)
       },
       // 折线图
-      initChartLine() {
+      initChartBar() {
         var option = {
-          'title': {
-            'text': ''
-          },
-          'tooltip': {
-            'trigger': 'axis'
-          },
-          'legend': {
-            'data': this.xAxis
-          },
-          'grid': {
-            'left': '3%',
-            'right': '4%',
-            'bottom': '3%',
-            'containLabel': true
-          },
-          'toolbox': {
-            'feature': {
-              'saveAsImage': { }
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'shadow'
             }
           },
-          'xAxis': {
-            'type': 'category',
-            'boundaryGap': false,
-            'data': this.legendDatas
+          legend: {
+            data: this.legendDatas
           },
-          'yAxis': {
-            'type': 'value'
+          grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
           },
-          'series': this.series
+          xAxis: [
+            {
+              type: 'category',
+              data: this.xAxis
+            }
+          ],
+          yAxis: [
+            {
+              type: 'value'
+            }
+          ],
+          series: this.series
         }
-        this.chartLine = echarts.init(document.getElementById('J_chartLineBox'))
-        this.chartLine.setOption(option,true)
+        this.chartBar = echarts.init(document.getElementById('J_chartBarBox'))
+        this.chartBar.setOption(option)
         window.addEventListener('resize', () => {
-          this.chartLine.resize()
+          this.chartBar.resize()
         })
-      }
+      },
     }
   }
 </script>
@@ -180,6 +178,11 @@
     padding-top: 10px;
     padding-left: 10px;
     padding-bottom: 10px;
+  }
+
+  .group2 {
+    float: right;
+    margin-right: 30px;
   }
 
   .echartsTitle div {

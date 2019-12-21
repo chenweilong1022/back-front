@@ -16,8 +16,15 @@
 
     <!--<record-account-online-playing ref="recordAccountOnlinePlaying"></record-account-online-playing>-->
 
+    <record-account-online-playing ref="recordAccountOnlinePlaying"></record-account-online-playing>
     <player-online-statistics ref="playerOnlineStatistics"></player-online-statistics>
 
+
+    <account-login-everyday-statistics ref="accountLoginEverydayStatistics"></account-login-everyday-statistics>
+
+    <account-register-everyday-statistics ref="accountRegisterEverydayStatistics"></account-register-everyday-statistics>
+    <recharge-amount-statistics ref="rechargeAmountStatistics"></recharge-amount-statistics>
+    <total-gold-everyday-statistics ref="totalGoldEverydayStatistics"></total-gold-everyday-statistics>
   </div>
 </template>
 
@@ -26,12 +33,22 @@ import { mapGetters } from 'vuex'
 // import adminDashboard from './admin'
 import adminMonitor from './monitor'
 import playerOnlineStatistics from '@/views/index/playerOnlineStatistics'
+import accountLoginEverydayStatistics from '@/views/index/accountLoginEverydayStatistics'
+import accountRegisterEverydayStatistics from '@/views/index/accountRegisterEverydayStatistics'
+import rechargeAmountStatistics from '@/views/index/rechargeAmountStatistics'
+import totalGoldEverydayStatistics from '@/views/index/totalGoldEverydayStatistics'
+import recordAccountOnlinePlaying from '@/views/platform/recordAccountOnlinePlaying'
 
 export default {
   name: 'Dashboard',
   components: {
     adminMonitor,
-    playerOnlineStatistics
+    playerOnlineStatistics,
+    accountLoginEverydayStatistics,
+    accountRegisterEverydayStatistics,
+    rechargeAmountStatistics,
+    totalGoldEverydayStatistics,
+    recordAccountOnlinePlaying
   },
   data() {
     return {

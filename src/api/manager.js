@@ -122,3 +122,47 @@ export function playerOnlineStatisticsButtons(data) {
     data: data
   })
 }
+
+export function accountLoginRegistrEverydayStatistics(data) {
+  return request({
+    url: '/index/accountLoginRegistrEverydayStatistics',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: data
+  })
+}
+
+export function rechargeAmountStatistics(data) {
+  return request({
+    url: '/index/rechargeAmountStatistics',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: data
+  })
+}
+
+export function appPayChannel(data) {
+  return request({
+    url: '/index/appPayChannel',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: data
+  })
+}
+
+export function totalGoldEverydayStatistics(data) {
+  return request({
+    url: '/index/totalGoldEverydayStatistics',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: data
+  })
+}

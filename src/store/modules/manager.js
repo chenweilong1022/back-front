@@ -109,6 +109,42 @@ const manager = {
           reject(error)
         })
       })
+    },
+    AccountLoginRegistrEverydayStatistics({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.accountLoginRegistrEverydayStatistics(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    RechargeAmountStatistics({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.rechargeAmountStatistics(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    AppPayChannel({ commit }) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.appPayChannel().then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    TotalGoldEverydayStatistics({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.totalGoldEverydayStatistics(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
     }
   }
 }

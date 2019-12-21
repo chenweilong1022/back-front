@@ -1,7 +1,7 @@
 <template>
   <div class="mod-demo-echarts">
     <div class="echartsTitle">
-    <div>游戏玩家在线走势</div>
+    <div>平台-总金币走势</div>
     <div>时间: {{startTime}}-{{endTime}}</div>
   </div>
     <div class="echartsChoose">
@@ -13,10 +13,24 @@
     <el-row :gutter="20">
       <el-col :span="24">
         <el-card>
-          <div id="J_chartLineBox" class="chart-box"></div>
+          <div id="J_chartLineBox1" class="chart-box"></div>
         </el-card>
       </el-col>
     </el-row>
+    </div>
+
+    <div class="moneyShow1">
+
+      <el-row class="money1">
+        <span>{{totalGold}}</span>
+        <span>{{gold}}</span>
+        <span>{{bankGold}}</span>
+      </el-row>
+      <el-row class="title1">
+        <span>玩家总金币(单位:元)</span>
+        <span>玩家身上总金币(单位:元)</span>
+        <span>玩家银行总金币(单位:元)</span>
+      </el-row>
     </div>
   </div>
 </template>
@@ -35,6 +49,9 @@
         buttons: [],
         startTime: '',
         endTime: '',
+        gold: '',
+        bankGold: '',
+        totalGold: ''
       }
     },
     mounted () {
@@ -48,6 +65,7 @@
       }
     },
     methods: {
+
       initButton() {
         this.$store.dispatch('PlayerOnlineStatisticsButtons', {}).then(resp => {
           this.buttons = resp.data
@@ -58,33 +76,28 @@
       initData(key) {
         this.key = key
         this.legendDatas = []
-        this.xAxis = []
         this.series = []
-        console.log('开始')
-        this.$store.dispatch('PlayerOnlineStatistics', { key: key }).then(resp => {
+        console.log(this.series)
+        this.$store.dispatch('TotalGoldEverydayStatistics', { key: key}).then(resp => {
+          console.log(resp)
 
+          this.gold = resp.data.gold
+          this.bankGold = resp.data.bankGold
+          this.totalGold = resp.data.totalGold
+
+          this.xAxis = resp.data.xAxis
           this.startTime = resp.data.startTime
           this.endTime = resp.data.endTime
-
-          for (let value of resp.data.dateTimes) {
-            this.legendDatas.push(value)
-          }
-
-          for (let value of resp.data.playerOnlineStatisticsVos) {
-            this.xAxis.push(value.date)
-            const serie = {};
-            serie.name = value.date
+          for (const value of resp.data.totalGoldEverydayStatisticsVos) {
+            this.legendDatas.push(value.goldSource)
+            const serie = {}
+            serie.name = value.goldSource
             serie.type = 'line'
             // serie.stack = '总量'
-            serie.data = value.list
+            serie.data = value.golds
             this.series.push(serie)
           }
-
-          console.log(this.legendDatas)
-          console.log(this.series)
-          console.log(this.xAxis)
           this.initChartLine()
-          this.chartLine.resize()
         }).catch(() => {
         })
       },
@@ -101,7 +114,7 @@
             'trigger': 'axis'
           },
           'legend': {
-            'data': this.xAxis
+            'data': this.legendDatas
           },
           'grid': {
             'left': '3%',
@@ -117,15 +130,15 @@
           'xAxis': {
             'type': 'category',
             'boundaryGap': false,
-            'data': this.legendDatas
+            'data': this.xAxis
           },
           'yAxis': {
             'type': 'value'
           },
           'series': this.series
         }
-        this.chartLine = echarts.init(document.getElementById('J_chartLineBox'))
-        this.chartLine.setOption(option,true)
+        this.chartLine = echarts.init(document.getElementById('J_chartLineBox1'))
+        this.chartLine.setOption(option)
         window.addEventListener('resize', () => {
           this.chartLine.resize()
         })
@@ -188,5 +201,29 @@
 
   .echartsTitle div:nth-child(2) {
     float: right;
+  }
+
+  .moneyShow1 {
+    margin-top: 30px;
+    border: 1px solid #d9e0ee;
+  }
+
+  .title1,.money1 {
+    width: 100%;
+    height: 40px;
+    font-size: 25px;
+    line-height: 40px;
+  }
+
+  .title1 span,.money1 span {
+    display: inline-block;
+    width: 32%;
+    text-align: center;
+    border-right: 1px solid #d9e0ee;
+    border-collapse: collapse;
+  }
+
+  .money1 span{
+    font-weight: 700;
   }
 </style>
