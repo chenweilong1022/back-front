@@ -650,6 +650,36 @@ export const asyncRouterMap = [
           path: '/index/totalGoldEverydayStatistics',
           auth: true
         }
+      },
+      {
+        path: 'tblrecorddailyrechargereport',
+        name: 'tblrecorddailyrechargereport',
+        component: () => import('@/views/platform/tblrecorddailyrechargereport'),
+        meta: {
+          title: '每日充值统计',
+          path: '/platform/tblrecorddailyrechargereport',
+          auth: true
+        }
+      },
+      {
+        path: 'tblrecordchanneldaily',
+        name: 'tblrecordchanneldaily',
+        component: () => import('@/views/platform/tblrecordchanneldaily'),
+        meta: {
+          title: '渠道日报',
+          path: '/platform/tblrecordchanneldaily',
+          auth: true
+        }
+      },
+      {
+        path: 'tblrecordchannelgeneralizecard',
+        name: 'tblrecordchannelgeneralizecard',
+        component: () => import('@/views/platform/tblrecordchannelgeneralizecard'),
+        meta: {
+          title: '渠道推广统计',
+          path: '/platform/tblrecordchannelgeneralizecard',
+          auth: true
+        }
       }
     ]
   },

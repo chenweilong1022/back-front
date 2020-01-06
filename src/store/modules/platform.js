@@ -296,6 +296,141 @@ const platform = {
         })
       })
     },
+    Listtblrecorddailyrechargereport({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        PlatformApi.listtblrecorddailyrechargereport(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Savetblrecorddailyrechargereport({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        PlatformApi.savetblrecorddailyrechargereport(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Updatetblrecorddailyrechargereport({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        PlatformApi.updatetblrecorddailyrechargereport(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Deletetblrecorddailyrechargereport({ commit }, id) {
+      return new Promise((resolve, reject) => {
+        PlatformApi.deletetblrecorddailyrechargereport(id).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Listtblrecordchanneldaily({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        PlatformApi.listtblrecordchanneldaily(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Savetblrecordchanneldaily({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        PlatformApi.savetblrecordchanneldaily(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Updatetblrecordchanneldaily({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        PlatformApi.updatetblrecordchanneldaily(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Deletetblrecordchanneldaily({ commit }, id) {
+      return new Promise((resolve, reject) => {
+        PlatformApi.deletetblrecordchanneldaily(id).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Recordchannelgeneralizebuttons({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        PlatformApi.recordchannelgeneralizebuttons(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Listtblrecordchannelgeneralize({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        PlatformApi.listtblrecordchannelgeneralize(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Savetblrecordchannelgeneralize({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        PlatformApi.savetblrecordchannelgeneralize(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Updatetblrecordchannelgeneralize({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        PlatformApi.updatetblrecordchannelgeneralize(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Deletetblrecordchannelgeneralize({ commit }, id) {
+      return new Promise((resolve, reject) => {
+        PlatformApi.deletetblrecordchannelgeneralize(id).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Accountregisterchannel({ commit }) {
+      return new Promise((resolve, reject) => {
+        PlatformApi.accountregisterchannel().then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Accounchannelclassify({ commit }) {
+      return new Promise((resolve, reject) => {
+        PlatformApi.accounchannelclassify().then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
   }
 }
 

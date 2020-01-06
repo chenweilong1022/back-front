@@ -327,7 +327,7 @@ export function updateShareImage(data) {
 
 export function uploadImage(data) {
   return request({
-    url: '/api/files/upload/images',
+    url: '/api/s3/files/upload/images',
     method: 'post',
     headers: {
       'api-version': 'v1',
@@ -346,3 +346,164 @@ export function listAllRecordAccountOnlinePlaying(data) {
     }
   })
 }
+
+export function listtblrecorddailyrechargereport(data) {
+  return request({
+    url: '/zdlog/tblrecorddailyrechargereport/list',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: data
+  })
+}
+
+export function savetblrecorddailyrechargereport(data) {
+  return request({
+    url: '/zdlog/tblrecorddailyrechargereport/save',
+    method: 'post',
+    headers: {
+      'api-version': 'v2'
+    },
+    data: data
+  })
+}
+
+export function updatetblrecorddailyrechargereport(data) {
+  return request({
+    url: '/zdlog/tblrecorddailyrechargereport/update',
+    method: 'put',
+    headers: {
+      'api-version': 'v2'
+    },
+    data: data
+  })
+}
+
+export function deletetblrecorddailyrechargereport(id) {
+  return request({
+    url: '/zdlog/tblrecorddailyrechargereport/delete/' + id,
+    method: 'delete',
+    headers: {
+      'api-version': 'v2'
+    }
+  })
+}
+
+export function listtblrecordchanneldaily(data) {
+  return request({
+    url: '/zdlog/tblrecordchanneldaily/list',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: data
+  })
+}
+
+export function savetblrecordchanneldaily(data) {
+  return request({
+    url: '/zdlog/tblrecordchanneldaily/save',
+    method: 'post',
+    headers: {
+      'api-version': 'v2'
+    },
+    data: data
+  })
+}
+
+export function updatetblrecordchanneldaily(data) {
+  return request({
+    url: '/zdlog/tblrecordchanneldaily/update',
+    method: 'put',
+    headers: {
+      'api-version': 'v2'
+    },
+    data: data
+  })
+}
+
+export function deletetblrecordchanneldaily(id) {
+  return request({
+    url: '/zdlog/tblrecordchanneldaily/delete/' + id,
+    method: 'delete',
+    headers: {
+      'api-version': 'v2'
+    }
+  })
+}
+
+export function listtblrecordchannelgeneralize(data) {
+  return request({
+    url: '/zdlog/tblrecordchannelgeneralize/list',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: data
+  })
+}
+
+export function recordchannelgeneralizebuttons(data) {
+  return request({
+    url: '/zdlog/tblrecordchannelgeneralize/recordchannelgeneralizebuttons',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: data
+  })
+}
+
+export function savetblrecordchannelgeneralize(data) {
+  return request({
+    url: '/zdlog/tblrecordchannelgeneralize/save',
+    method: 'post',
+    headers: {
+      'api-version': 'v2'
+    },
+    data: data
+  })
+}
+
+export function updatetblrecordchannelgeneralize(data) {
+  return request({
+    url: '/zdlog/tblrecordchannelgeneralize/update',
+    method: 'put',
+    headers: {
+      'api-version': 'v2'
+    },
+    data: data
+  })
+}
+
+export function deletetblrecordchannelgeneralize(id) {
+  return request({
+    url: '/zdlog/tblrecordchannelgeneralize/delete/' + id,
+    method: 'delete',
+    headers: {
+      'api-version': 'v2'
+    }
+  })
+}
+
+export function accountregisterchannel(id) {
+  return request({
+    url: '/platform/constantconfig/accountregisterchannel',
+    method: 'post',
+    headers: {
+      'api-version': 'v2'
+    }
+  })
+}
+
+export function accounchannelclassify(id) {
+  return request({
+    url: '/platform/constantconfig/accounchannelclassify',
+    method: 'post',
+    headers: {
+      'api-version': 'v2'
+    }
+  })
+}
+

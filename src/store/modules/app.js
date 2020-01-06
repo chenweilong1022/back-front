@@ -7,7 +7,7 @@ const app = {
       withoutAnimation: false
     },
     device: 'desktop',
-    host: 'http://47.104.247.143:2333'
+    host: 'http://39.108.50.148:8080'
     // host: 'http://47.111.11.231:2333'
     // host: 'http://localhost:2333'
   },
