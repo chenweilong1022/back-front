@@ -28,7 +28,7 @@
       </el-table-column>
       <el-table-column align="center" label="缩略图">
         <template slot-scope="scope">
-          <img :src="host + scope.row.thumbUrl" :large="host + scope.row.showUrl" :preview="scope.row.id" >
+          <img :src="scope.row.thumbUrl" :large="scope.row.showUrl" :preview="scope.row.id" style="width: 100%">
         </template>
       </el-table-column>
       <el-table-column align="center" label="发布时间">
