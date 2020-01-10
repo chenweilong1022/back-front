@@ -301,6 +301,26 @@ export const asyncRouterMap = [
           path: '/manage/manageLog',
           auth: true
         }
+      },
+      {
+        path: 'tblmainframemonitorlog',
+        name: 'tblmainframemonitorlog',
+        component: () => import('@/views/manage/tblmainframemonitorlog'),
+        meta: {
+          title: '日志主机',
+          path: '/manage/tblmainframemonitorlog',
+          auth: true
+        }
+      },
+      {
+        path: 'tblmonitor',
+        name: 'tblmonitor',
+        component: () => import('@/views/manage/tblmonitor'),
+        meta: {
+          title: '日志触发器',
+          path: '/manage/tblmonitor',
+          auth: true
+        }
       }
     ]
   },
@@ -678,6 +698,84 @@ export const asyncRouterMap = [
         meta: {
           title: '渠道推广统计',
           path: '/platform/tblrecordchannelgeneralizecard',
+          auth: true
+        }
+      },
+    ]
+  },
+  {
+    path: '/spread',
+    redirect: 'noredirect',
+    component: Layout,
+    name: 'Game',
+    alwaysShow: true,
+    meta: {
+      title: '代理系统管理',
+      path: '/spread',
+      auth: true,
+      icon: 'nested'
+    },
+    children: [
+      {
+        path: 'agentRealtime',
+        name: 'AgentRealtime',
+        component: () => import('@/views/spread/agentRealtime'),
+        meta: {
+          title: '当期代理数据',
+          path: '/spread/agentRealtime',
+          auth: true
+        }
+      },
+      {
+        path: 'underAgentRealtime',
+        name: 'UnderAgentRealtime',
+        hidden: true,
+        component: () => import('@/views/spread/underAgentRealtime'),
+        meta: {
+          title: '下级实时代理页面',
+          path: '/spread/underAgentRealtime',
+          auth: true
+        }
+      },
+      {
+        path: 'agentRecord',
+        name: 'AgentRecord',
+        component: () => import('@/views/spread/agentRecord'),
+        meta: {
+          title: '代理结算记录',
+          path: '/spread/agentRecord',
+          auth: true
+        }
+      },
+      {
+        path: 'underAgentRecord',
+        name: 'UnderAgentRecord',
+        hidden: true,
+        component: () => import('@/views/spread/underAgentRecord'),
+        meta: {
+          title: '下级代理结算页面',
+          path: '/spread/underAgentRecord',
+          auth: true
+        }
+      },
+      {
+        path: 'agentSummary',
+        name: 'AgentSummary',
+        component: () => import('@/views/spread/agentSummary'),
+        meta: {
+          title: '代理结算汇总',
+          path: '/spread/agentSummary',
+          auth: true
+        }
+      },
+      {
+        path: 'underAgentSummary',
+        name: 'UnderAgentSummary',
+        hidden: true,
+        component: () => import('@/views/spread/underAgentSummary'),
+        meta: {
+          title: '下级代理结算汇总页面',
+          path: '/spread/underAgentSummary',
           auth: true
         }
       }

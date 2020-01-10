@@ -145,7 +145,81 @@ const manager = {
           reject(error)
         })
       })
+    },
+
+    Listtblmainframemonitorlog({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.listtblmainframemonitorlog(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Savetblmainframemonitorlog({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.savetblmainframemonitorlog(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Updatetblmainframemonitorlog({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.updatetblmainframemonitorlog(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Deletetblmainframemonitorlog({ commit }, id) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.deletetblmainframemonitorlog(id).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Listtblmonitor({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.listtblmonitor(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Savetblmonitor({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.savetblmonitor(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Updatetblmonitor({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.updatetblmonitor(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Deletetblmonitor({ commit }, id) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.deletetblmonitor(id).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
     }
+
   }
 }
 

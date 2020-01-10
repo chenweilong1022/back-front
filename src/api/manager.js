@@ -166,3 +166,89 @@ export function totalGoldEverydayStatistics(data) {
     data: data
   })
 }
+
+export function listtblmonitor(data) {
+  return request({
+    url: '/zdmanage/tblmonitor/list',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: data
+  })
+}
+
+export function savetblmonitor(data) {
+  return request({
+    url: '/zdmanage/tblmonitor/save',
+    method: 'post',
+    headers: {
+      'api-version': 'v2'
+    },
+    data: data
+  })
+}
+
+export function updatetblmonitor(data) {
+  return request({
+    url: '/zdmanage/tblmonitor/update',
+    method: 'put',
+    headers: {
+      'api-version': 'v2'
+    },
+    data: data
+  })
+}
+
+export function deletetblmonitor(id) {
+  return request({
+    url: '/zdmanage/tblmonitor/delete/' + id,
+    method: 'delete',
+    headers: {
+      'api-version': 'v2'
+    }
+  })
+}
+
+export function listtblmainframemonitorlog(data) {
+  return request({
+    url: '/zdmanage/tblmainframemonitorlog/list',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: data
+  })
+}
+
+export function savetblmainframemonitorlog(data) {
+  return request({
+    url: '/zdmanage/tblmainframemonitorlog/save',
+    method: 'post',
+    headers: {
+      'api-version': 'v2'
+    },
+    data: data
+  })
+}
+
+export function updatetblmainframemonitorlog(data) {
+  return request({
+    url: '/zdmanage/tblmainframemonitorlog/update',
+    method: 'put',
+    headers: {
+      'api-version': 'v2'
+    },
+    data: data
+  })
+}
+
+export function deletetblmainframemonitorlog(id) {
+  return request({
+    url: '/zdmanage/tblmainframemonitorlog/delete/' + id,
+    method: 'delete',
+    headers: {
+      'api-version': 'v2'
+    }
+  })
+}
