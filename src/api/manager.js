@@ -252,3 +252,46 @@ export function deletetblmainframemonitorlog(id) {
     }
   })
 }
+
+export function listtblsyslog(data) {
+  return request({
+    url: '/zdmanage/tblsyslog/list',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: data
+  })
+}
+
+export function savetblsyslog(data) {
+  return request({
+    url: '/zdmanage/tblsyslog/save',
+    method: 'post',
+    headers: {
+      'api-version': 'v2'
+    },
+    data: data
+  })
+}
+
+export function updatetblsyslog(data) {
+  return request({
+    url: '/zdmanage/tblsyslog/update',
+    method: 'put',
+    headers: {
+      'api-version': 'v2'
+    },
+    data: data
+  })
+}
+
+export function deletetblsyslog(id) {
+  return request({
+    url: '/zdmanage/tblsyslog/delete/' + id,
+    method: 'delete',
+    headers: {
+      'api-version': 'v2'
+    }
+  })
+}

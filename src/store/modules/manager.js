@@ -218,6 +218,42 @@ const manager = {
           reject(error)
         })
       })
+    },
+    Listtblsyslog({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.listtblsyslog(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Savetblsyslog({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.savetblsyslog(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Updatetblsyslog({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.updatetblsyslog(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Deletetblsyslog({ commit }, id) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.deletetblsyslog(id).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
     }
 
   }

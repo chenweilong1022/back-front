@@ -321,6 +321,16 @@ export const asyncRouterMap = [
           path: '/manage/tblmonitor',
           auth: true
         }
+      },
+      {
+        path: 'tblsyslog',
+        name: 'tblsyslog',
+        component: () => import('@/views/manage/tblsyslog'),
+        meta: {
+          title: '系统日志',
+          path: '/manage/tblsyslog',
+          auth: true
+        }
       }
     ]
   },
