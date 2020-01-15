@@ -3,7 +3,7 @@
     <hamburger :toggle-click="toggleSideBar" :is-active="sidebar.opened" class="hamburger-container"/>
     <breadcrumb />
     <div class="user-name">
-      <span>欢迎你，{{ name }}</span>
+      <span>欢迎您，{{ name }}</span>
     </div>
     <el-dropdown class="avatar-container" trigger="click">
       <div class="avatar-wrapper">
