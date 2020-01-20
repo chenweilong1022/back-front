@@ -791,6 +791,81 @@ export const asyncRouterMap = [
       }
     ]
   },
+  {
+    path: '/activity',
+    redirect: 'noredirect',
+    component: Layout,
+    name: 'activity',
+    alwaysShow: true,
+    meta: {
+      title: '活动管理',
+      path: '/activity',
+      auth: true,
+      icon: 'nested'
+    },
+    children: [
+      {
+        path: 'signIn',
+        name: 'signIn',
+        component: () => import('@/views/activity/signIn'),
+        meta: {
+          title: '签到奖励',
+          path: '/activity/signIn',
+          auth: true
+        }
+      },
+      {
+        path: 'firstCashback',
+        name: 'firstCashback',
+        component: () => import('@/views/activity/firstCashback'),
+        meta: {
+          title: '首充返现',
+          path: '/activity/firstCashback',
+          auth: true
+        }
+      },
+      {
+        path: 'rechargeCashBack',
+        name: 'rechargeCashBack',
+        component: () => import('@/views/activity/rechargeCashBack'),
+        meta: {
+          title: '充值返现',
+          path: '/activity/rechargeCashBack',
+          auth: true
+        }
+      },
+      {
+        path: 'InvitationPolite',
+        name: 'InvitationPolite',
+        component: () => import('@/views/activity/InvitationPolite'),
+        meta: {
+          title: '邀请有礼',
+          path: '/activity/InvitationPolite',
+          auth: true
+        }
+      },
+      {
+        path: 'agentAward',
+        name: 'agentAward',
+        component: () => import('@/views/activity/agentAward'),
+        meta: {
+          title: '代理奖上奖',
+          path: '/activity/agentAward',
+          auth: true
+        }
+      },
+      {
+        path: 'dailyAdventureAward',
+        name: 'dailyAdventureAward',
+        component: () => import('@/views/activity/dailyAdventureAward'),
+        meta: {
+          title: '每日闯关奖',
+          path: '/activity/dailyAdventureAward',
+          auth: true
+        }
+      }
+    ]
+  },
 
   { path: '*', redirect: '/404', hidden: true }
 ]

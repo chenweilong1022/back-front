@@ -12,6 +12,7 @@ import platform from './modules/platform'
 import robotManager from './modules/robotManager'
 import spread from './modules/spread'
 import agent from './modules/agent'
+import activity from './modules/activity'
 import getters from './getters'
 
 Vue.use(Vuex)
@@ -29,7 +30,8 @@ const store = new Vuex.Store({
     player,
     platform,
     spread,
-    agent
+    agent,
+    activity
   },
   getters
 })
