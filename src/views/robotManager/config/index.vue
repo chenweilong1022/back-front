@@ -187,45 +187,6 @@
         </div>
       </el-card>
 
-      <el-card class="box-card-component">
-        <div slot="header" class="clearfix">
-          <h2>机器人列表<el-button style="margin-left: 10px;" type="primary" @click="addRobot">添加机器人</el-button></h2>
-        </div>
-        <div class="filter-container">
-          <el-table
-            :data="robots"
-            size="mini"
-            border
-            fit>
-            <el-table-column align="center" label="桌号/座位号">
-              <template slot-scope="scope">
-                {{ scope.row.tableid }} / {{ scope.row.seat }}
-              </template>
-            </el-table-column>
-            <el-table-column align="center" label="机器人ID">
-              <template slot-scope="scope">
-                {{ scope.row.uid }}
-              </template>
-            </el-table-column>
-            <el-table-column align="center" label="机器人名称">
-              <template slot-scope="scope">
-                {{ scope.row.name }}
-              </template>
-            </el-table-column>
-            <el-table-column align="center" label="身上金币">
-              <template slot-scope="scope">
-                {{ scope.row.gold | moneyFilter }}
-              </template>
-            </el-table-column>
-            <el-table-column align="center" label="操作">
-              <template slot-scope="scope">
-                <el-button type="text" @click="resetRobot(scope.row.uid)">重置机器人</el-button>
-                <el-button type="text" @click="delRobot(scope.row)">删除机器人</el-button>
-              </template>
-            </el-table-column>
-          </el-table>
-        </div>
-      </el-card>
     </el-row>
   </div>
 </template>
@@ -313,7 +274,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$route.path)
     this.queryRoomIds()
   },
   methods: {
