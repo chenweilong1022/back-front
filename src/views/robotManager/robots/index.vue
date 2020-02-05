@@ -1,22 +1,6 @@
 <template>
   <div class="app-container">
-    <!--<el-row>-->
-      <!--<el-card class="box-card-component">-->
-        <!--<el-form ref="filterForm" :model="filterForm" :inline="true">-->
-          <!--<el-form-item label="选择房间">-->
-            <!--<el-select v-model="filterForm.roomId" @change="queryConfig()">-->
-              <!--<el-option v-for="item in rooms" :key="item.roomid" :label="item.roomName" :value="item.roomid" />-->
-            <!--</el-select>-->
-          <!--</el-form-item>-->
-          <!--<el-form-item>-->
-            <!--<el-button type="primary" icon="el-icon-refresh" class="btn-form" @click="queryConfig">刷新</el-button>-->
-          <!--</el-form-item>-->
-        <!--</el-form>-->
-      <!--</el-card>-->
-    <!--</el-row>-->
-
     <el-row id="content" style="margin-top: 20px;">
-
       <el-card class="box-card-component">
         <div slot="header" class="clearfix">
           <h2>机器人列表<el-button style="margin-left: 10px;" type="primary" @click="addRobot">添加机器人</el-button></h2>
