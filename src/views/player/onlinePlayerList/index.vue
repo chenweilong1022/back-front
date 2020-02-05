@@ -44,6 +44,25 @@
           </template>
         </el-table-column>
       </el-table-column>
+
+      <el-table-column label="当日充值" align="center">
+        <el-table-column label="总充值" align="center">
+          <template slot-scope="scope">
+            <span :style="scope.row.todayRechargeGold > 0 ? 'color:red;' : 'color:green;'">{{ scope.row.todayRechargeGold }}</span><br>
+            <span :style="scope.row.totalRechargeGold > 0 ? 'color:red;' : 'color:green;'">{{ scope.row.totalRechargeGold }}</span>
+          </template>
+        </el-table-column>
+      </el-table-column>
+
+      <el-table-column label="当日提现" align="center">
+        <el-table-column label="总提现" align="center">
+          <template slot-scope="scope">
+            <span :style="scope.row.todayWithdrawGold > 0 ? 'color:red;' : 'color:green;'">{{ scope.row.todayWithdrawGold }}</span><br>
+            <span :style="scope.row.totalWithdrawGold > 0 ? 'color:red;' : 'color:green;'">{{ scope.row.totalWithdrawGold }}</span>
+          </template>
+        </el-table-column>
+      </el-table-column>
+
       <el-table-column label="当日输赢" align="center">
         <el-table-column label="总输赢" align="center">
           <template slot-scope="scope">

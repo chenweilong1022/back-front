@@ -167,6 +167,16 @@ export function listPlayerOrderByQry(query) {
     data: query
   })
 }
+export function listPlayerOnlineOrderByQry(query) {
+  return request({
+    url: '/players/order/online/query',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: query
+  })
+}
 export function listWithdrawOrderByQry(query) {
   return request({
     url: '/players/withdraw/query',
@@ -398,6 +408,17 @@ export function remitGold(data) {
 export function listRemitGoldRecordByQry(query) {
   return request({
     url: '/players/remitGold/record',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: query
+  })
+}
+
+export function listRemitGoldRecordOnlineByQry(query) {
+  return request({
+    url: '/players/remitGold/online/record',
     method: 'post',
     headers: {
       'api-version': 'v1'

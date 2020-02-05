@@ -111,6 +111,15 @@ const player = {
         })
       })
     },
+    ListPlayerOnlineOrderByQry({ commit }, query) {
+      return new Promise((resolve, reject) => {
+        PlayerApi.listPlayerOnlineOrderByQry(query).then(resp => {
+          resolve(resp)
+        }).catch(err => {
+          reject(err)
+        })
+      })
+    },
     ListWithdrawOrderByQry({ commit }, query) {
       return new Promise((resolve, reject) => {
         PlayerApi.listWithdrawOrderByQry(query).then(resp => {
@@ -309,6 +318,15 @@ const player = {
     ListRemitGoldRecordByQry({ commit }, query) {
       return new Promise((resolve, reject) => {
         PlayerApi.listRemitGoldRecordByQry(query).then(resp => {
+          resolve(resp)
+        }).catch(err => {
+          reject(err)
+        })
+      })
+    },
+    ListRemitGoldRecordOnlineByQry({ commit }, query) {
+      return new Promise((resolve, reject) => {
+        PlayerApi.listRemitGoldRecordOnlineByQry(query).then(resp => {
           resolve(resp)
         }).catch(err => {
           reject(err)
