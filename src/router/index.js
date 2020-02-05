@@ -407,6 +407,16 @@ export const asyncRouterMap = [
         }
       },
       {
+        path: 'playerOnlineOrderList',
+        name: 'playerOnlineOrderList',
+        component: () => import('@/views/player/playerOnlineOrderList'),
+        meta: {
+          title: '在线玩家充值列表',
+          path: '/player/playerOnlineOrderList',
+          auth: true
+        }
+      },
+      {
         path: 'withdrawOrderList',
         name: 'WithdrawOrderList',
         component: () => import('@/views/player/withdrawOrderList'),
@@ -443,6 +453,16 @@ export const asyncRouterMap = [
         meta: {
           title: '人工充值日志',
           path: '/player/remitGoldRecord',
+          auth: true
+        }
+      },
+      {
+        path: 'remitGoldRecordOnline',
+        name: 'remitGoldRecordOnline',
+        component: () => import('@/views/player/remitGoldRecordOnline'),
+        meta: {
+          title: '在线玩家人工充值日志',
+          path: '/player/remitGoldRecordOnline',
           auth: true
         }
       },
