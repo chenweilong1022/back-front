@@ -30,13 +30,15 @@
         <jdnncard ref="jdnncard"></jdnncard>
         <dntgcard ref="dntgcard"></dntgcard>
         <shbycard ref="shbycard"></shbycard>
+        <brnncard ref="brnncard"></brnncard>
+        <qznncard ref="qznncard"></qznncard>
       </el-card>
     </el-row>
   </div>
 </template>
 
 <script>
-  import { bjlcard, lhcard, jdjlcard, jdslcard, jdnncard, dntgcard, shbycard } from './card'
+  import { bjlcard, lhcard, jdjlcard, jdslcard, jdnncard, dntgcard, shbycard, brnncard, qznncard } from './card'
 export default {
   name: 'RobotManage',
   components: {
@@ -46,7 +48,9 @@ export default {
     jdslcard,
     jdnncard,
     dntgcard,
-    shbycard
+    shbycard,
+    brnncard,
+    qznncard
   },
   filters: {
     moneyFilter(money) {
@@ -118,6 +122,10 @@ export default {
         this.card = this.$refs.dntgcard
       } else if (resp.data.cardName === 'shbycard') {
         this.card = this.$refs.shbycard
+      } else if (resp.data.cardName === 'brnncard') {
+        this.card = this.$refs.brnncard
+      } else if (resp.data.cardName === 'qznncard') {
+        this.card = this.$refs.qznncard
       }
       console.log(resp + '3')
     },
