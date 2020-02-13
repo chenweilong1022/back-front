@@ -2,7 +2,7 @@
   <div v-if="baseGameConfigVo" class="filter-container">
     <el-form ref="baseGameConfigVo" :model="baseGameConfigVo" label-position="right" style="width: 1000px;" >
 
-      <el-form-item label="max_banker_win_gold(max_banker_win_gold)" label-width="210px">
+      <el-form-item label="赢的钱超过这个值离开(max_banker_win_gold)" label-width="210px">
         <el-col :span="24">
           <el-form-item>
             <el-input v-model="baseGameConfigVo.max_banker_win_gold" style="width: 100%;"/>
@@ -10,7 +10,7 @@
         </el-col>
       </el-form-item>
 
-      <el-form-item label="off_banker_gold(off_banker_gold)" label-width="210px">
+      <el-form-item label="下庄金币(off_banker_gold)" label-width="210px">
         <el-col :span="24">
           <el-form-item>
             <el-input v-model="baseGameConfigVo.off_banker_gold" style="width: 100%;"/>
@@ -40,7 +40,7 @@
         </el-col>
       </el-form-item>
 
-      <el-form-item label="on_banker_cnt(on_banker_cnt)" label-width="210px">
+      <el-form-item label="申请上庄数量下限上限(on_banker_cnt)" label-width="210px">
         <el-col :span="12">
           <el-form-item label="最小值" label-width="80px">
             <el-input v-model="baseGameConfigVo.min_on_banker_cnt" style="width: 100%;"/>
@@ -54,7 +54,7 @@
       </el-form-item>
 
 
-      <el-form-item label="ask_bets_delay(ask_bets_delay)" label-width="210px">
+      <el-form-item label="下注延时下限上限(min_ask_bets_delay)" label-width="210px">
         <el-col :span="12">
           <el-form-item label="最小值" label-width="80px">
             <el-input v-model="baseGameConfigVo.min_ask_bets_delay" style="width: 100%;"/>
@@ -82,15 +82,15 @@
 
 
 
-      <el-form-item label="robot_min_max_gold(robot_min_max_gold)" label-width="210px">
+      <el-form-item label="离开金币下限上限(robot_min_gold)" label-width="210px">
         <el-col :span="12">
           <el-form-item label="最小值" label-width="80px">
-            <el-input v-model="baseGameConfigVo.robot_max_gold" style="width: 100%;"/>
+            <el-input v-model="baseGameConfigVo.robot_min_gold" style="width: 100%;"/>
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="最大值" label-width="80px">
-            <el-input v-model="baseGameConfigVo.robot_min_gold" style="width: 100%;"/>
+            <el-input v-model="baseGameConfigVo.robot_max_gold" style="width: 100%;"/>
           </el-form-item>
         </el-col>
       </el-form-item>
