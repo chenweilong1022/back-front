@@ -222,6 +222,8 @@ export default {
           })
           this.listLoading = false
           this.query()
+        }).catch(() => {
+          this.query()
         })
       }).catch(() => {
         this.query()
