@@ -254,8 +254,34 @@ const manager = {
           reject(error)
         })
       })
+    },
+    ListFileNames({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.listFileNames(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    Updatingprogram({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.updatingprogram(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    ShowLogs({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.showLogs(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
     }
-
   }
 }
 

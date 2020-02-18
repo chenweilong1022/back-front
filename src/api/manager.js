@@ -295,3 +295,37 @@ export function deletetblsyslog(id) {
     }
   })
 }
+
+export function listFileNames(data) {
+  return request({
+    url: '/updatingprogram/listFileNames',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: data
+  })
+}
+
+export function updatingprogram(data) {
+  return request({
+    url: '/updatingprogram/updatingprogram',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: data
+  })
+}
+
+export function showLogs(data) {
+  return request({
+    url: '/updatingprogram/showLogs',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: data
+  })
+}
+
