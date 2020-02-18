@@ -896,258 +896,6 @@ export const asyncRouterMap = [
       }
     ]
   },
-  // {
-  //   path: '/robots',
-  //   redirect: 'noredirect',
-  //   component: Layout,
-  //   name: 'robots',
-  //   alwaysShow: true,
-  //   meta: {
-  //     title: '平台机器人管理',
-  //     path: 'robots',
-  //     auth: true,
-  //     icon: 'nested'
-  //   },
-  //   children: [
-  //     {
-  //       path: 'config',
-  //       component: () => import('@/views/robotManager/config'),
-  //       name: 'config',
-  //       alwaysShow: false,
-  //       meta: {
-  //         title: '机器人配置',
-  //         path: 'config',
-  //         auth: true
-  //       }
-  //     },
-  //     {
-  //       path: 'baijiale',
-  //       redirect: 'noredirect',
-  //       component: () => import('@/views/robotManager/robots'),
-  //       name: 'baijiale',
-  //       alwaysShow: true,
-  //       meta: {
-  //         title: '百家乐',
-  //         path: 'baijiale',
-  //         auth: true,
-  //         icon: 'nested'
-  //       },
-  //       children: [
-  //         {
-  //           path: 'baijiale',
-  //           component: () => import('@/views/robotManager/robots'),
-  //           name: '12701',
-  //           alwaysShow: false,
-  //           meta: {
-  //             title: '百家乐',
-  //             path: 'baijiale',
-  //             auth: true
-  //           }
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       path: 'longhu',
-  //       redirect: 'noredirect',
-  //       component: () => import('@/views/robotManager/robots'),
-  //       name: 'longhu',
-  //       alwaysShow: true,
-  //       meta: {
-  //         title: '龙虎',
-  //         path: 'longhu',
-  //         auth: true,
-  //         icon: 'nested'
-  //       },
-  //       children: [
-  //         {
-  //           path: 'longzhenghudou',
-  //           component: () => import('@/views/robotManager/robots'),
-  //           name: '12801',
-  //           alwaysShow: false,
-  //           meta: {
-  //             title: '龙争虎斗',
-  //             path: 'longzhenghudou',
-  //             auth: true
-  //           }
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       path: 'jingdianjielong',
-  //       redirect: 'noredirect',
-  //       component: () => import('@/views/robotManager/robots'),
-  //       name: 'jingdianjielong',
-  //       alwaysShow: true,
-  //       meta: {
-  //         title: '经典接龙',
-  //         path: 'jingdianjielong',
-  //         auth: true,
-  //         icon: 'nested'
-  //       },
-  //       children: [
-  //         {
-  //           path: 'jingdianjielong',
-  //           component: () => import('@/views/robotManager/robots'),
-  //           name: '14201',
-  //           alwaysShow: false,
-  //           meta: {
-  //             title: '经典接龙',
-  //             path: 'jingdianjielong',
-  //             auth: true
-  //           }
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       path: 'jingdiansaolei',
-  //       redirect: 'noredirect',
-  //       component: () => import('@/views/robotManager/robots'),
-  //       name: 'jingdiansaolei',
-  //       alwaysShow: true,
-  //       meta: {
-  //         title: '经典扫雷',
-  //         path: 'jingdiansaolei',
-  //         auth: true,
-  //         icon: 'nested'
-  //       },
-  //       children: [
-  //         {
-  //           path: 'jingdiansaolei',
-  //           component: () => import('@/views/robotManager/robots'),
-  //           name: '14301',
-  //           alwaysShow: false,
-  //           meta: {
-  //             title: '经典扫雷',
-  //             path: 'jingdiansaolei',
-  //             auth: true
-  //           }
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       path: 'jingdianniuniu',
-  //       redirect: 'noredirect',
-  //       component: () => import('@/views/robotManager/robots'),
-  //       name: 'jingdianniuniu',
-  //       alwaysShow: true,
-  //       meta: {
-  //         title: '经典牛牛',
-  //         path: 'jingdianniuniu',
-  //         auth: true,
-  //         icon: 'nested'
-  //       },
-  //       children: [
-  //         {
-  //           path: 'jingdianniuniu',
-  //           component: () => import('@/views/robotManager/robots'),
-  //           name: '14401',
-  //           alwaysShow: false,
-  //           meta: {
-  //             title: '经典牛牛',
-  //             path: 'jingdianniuniu',
-  //             auth: true
-  //           }
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       path: 'danaotiangong',
-  //       redirect: 'noredirect',
-  //       component: () => import('@/views/robotManager/robots'),
-  //       name: 'danaotiangong',
-  //       alwaysShow: true,
-  //       meta: {
-  //         title: '大闹天宫',
-  //         path: 'danaotiangong',
-  //         auth: true,
-  //         icon: 'nested'
-  //       },
-  //       children: [
-  //         {
-  //           path: 'danaotiangongchujichang',
-  //           component: () => import('@/views/robotManager/robots'),
-  //           name: '14501',
-  //           alwaysShow: false,
-  //           meta: {
-  //             title: '大闹天宫初级场',
-  //             path: 'danaotiangongchujichang',
-  //             auth: true
-  //           }
-  //         },
-  //         {
-  //           path: 'danaotiangongzhongjichang',
-  //           component: () => import('@/views/robotManager/robots'),
-  //           name: '14502',
-  //           alwaysShow: false,
-  //           meta: {
-  //             title: '大闹天宫中级场',
-  //             path: 'danaotiangongzhongjichang',
-  //             auth: true
-  //           }
-  //         },
-  //         {
-  //           path: 'danaotiangonggaojichang',
-  //           component: () => import('@/views/robotManager/robots'),
-  //           name: '14503',
-  //           alwaysShow: false,
-  //           meta: {
-  //             title: '大闹天宫高级场',
-  //             path: 'danaotiangonggaojichang',
-  //             auth: true
-  //           }
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       path: 'shenhaiboyu',
-  //       redirect: 'noredirect',
-  //       component: () => import('@/views/robotManager/robots'),
-  //       name: 'shenhaiboyu',
-  //       alwaysShow: true,
-  //       meta: {
-  //         title: '深海捕鱼',
-  //         path: 'shenhaiboyu',
-  //         auth: true,
-  //         icon: 'nested'
-  //       },
-  //       children: [
-  //         {
-  //           path: 'shenhaiboyuchujichang',
-  //           component: () => import('@/views/robotManager/robots'),
-  //           name: '14801',
-  //           alwaysShow: false,
-  //           meta: {
-  //             title: '深海捕鱼初级场',
-  //             path: 'shenhaiboyuchujichang',
-  //             auth: true
-  //           }
-  //         },
-  //         {
-  //           path: 'shenhaiboyuzhongjichang',
-  //           component: () => import('@/views/robotManager/robots'),
-  //           name: '14802',
-  //           alwaysShow: false,
-  //           meta: {
-  //             title: '深海捕鱼中级场',
-  //             path: 'shenhaiboyuzhongjichang',
-  //             auth: true
-  //           }
-  //         },
-  //         {
-  //           path: 'shenhaiboyugaojichang',
-  //           component: () => import('@/views/robotManager/robots'),
-  //           name: '14803',
-  //           alwaysShow: false,
-  //           meta: {
-  //             title: '深海捕鱼高级场',
-  //             path: 'shenhaiboyugaojichang',
-  //             auth: true
-  //           }
-  //         }
-  //       ]
-  //     }
-  //   ]
-  // },
   {
     path: '/robots',
     redirect: 'noredirect',
@@ -1563,6 +1311,32 @@ export const asyncRouterMap = [
             }
           }
         ]
+      }
+    ]
+  },
+  {
+    path: '/updatingprogram',
+    redirect: 'noredirect',
+    component: Layout,
+    name: 'updatingprogram',
+    alwaysShow: true,
+    meta: {
+      title: '程序更新',
+      path: 'updatingprogram',
+      auth: true,
+      icon: 'nested'
+    },
+    children: [
+      {
+        path: 'update',
+        component: () => import('@/views/updatingprogram/update'),
+        name: 'update',
+        alwaysShow: false,
+        meta: {
+          title: '程序更新',
+          path: 'update',
+          auth: true
+        }
       }
     ]
   },
