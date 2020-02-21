@@ -132,8 +132,6 @@ export default {
         callback(new Error('必填项'))
       } else if (isNaN(Number(value))) {
         callback(new Error('必须为纯数字'))
-      } else if (Number(value) < 0 || Number(value) > 2) {
-        callback(new Error('必须介于0到2之间'))
       } else {
         callback()
       }

@@ -10,7 +10,7 @@ MAINTAINER chenweilong<1433471850@qq.com>
 # 拷贝文件到容器
 ADD dist/ /app
 
-ADD default1.conf /opt/bitnami/nginx/conf/nginx/default.conf
+ADD default1.conf /opt/bitnami/nginx/conf/server_blocks/default.conf
 
 #RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
 # 开放端口
