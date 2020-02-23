@@ -137,6 +137,7 @@ export default {
       }
     }
     return {
+      timer: '',
       filterForm: {
         showId: null,
         gameId: 0,
@@ -158,13 +159,19 @@ export default {
   },
   created() {
     this.queryGames()
-    this.query()
+    this.queryInterval()
   },
   methods: {
     queryGames() {
       this.$store.dispatch('ListGamesAndOnlineCount').then(resp => {
         this.games = resp.data
       })
+    },
+    queryInterval() {
+      if (this.timer) {
+        clearInterval(this.timer)
+      }
+      this.timer = setInterval(this.query, 5000)
     },
     query() {
       this.listLoading = true
@@ -178,7 +185,7 @@ export default {
     },
     changeBtnValue(gameId) {
       this.filterForm.gameId = gameId
-      this.query()
+      this.queryInterval()
     },
     changeRatio(data) {
       this.dialogNewOrEditVisible = true
@@ -212,7 +219,7 @@ export default {
             })
             this.saveBtnLoading = false
             this.dialogNewOrEditVisible = false
-            this.query()
+            this.queryInterval()
           }).catch(() => {
             this.saveBtnLoading = false
           })
@@ -232,11 +239,11 @@ export default {
     },
     handleSizeChange(val) {
       this.filterForm.pageSize = val
-      this.query()
+      this.queryInterval()
     },
     handleCurrentChange(val) {
       this.filterForm.pageNo = val
-      this.query()
+      this.queryInterval()
     }
   }
 }
