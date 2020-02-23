@@ -14,7 +14,7 @@
           </el-button-group>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" icon="el-icon-search" class="btn-form" @click="query">查询</el-button>
+          <el-button type="primary" icon="el-icon-search" class="btn-form" @click="queryInterval">查询</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -159,6 +159,7 @@ export default {
   },
   created() {
     this.queryGames()
+    this.query()
     this.queryInterval()
   },
   methods: {
@@ -166,12 +167,13 @@ export default {
       this.$store.dispatch('ListGamesAndOnlineCount').then(resp => {
         this.games = resp.data
       })
+      this.query()
     },
     queryInterval() {
       if (this.timer) {
         clearInterval(this.timer)
       }
-      this.timer = setInterval(this.query, 5000)
+      this.timer = setInterval(this.queryGames, 5000)
     },
     query() {
       this.listLoading = true
