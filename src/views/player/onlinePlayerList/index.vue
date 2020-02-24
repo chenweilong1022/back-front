@@ -162,6 +162,11 @@ export default {
     this.query()
     this.queryInterval()
   },
+  beforeDestroy() {
+    if (this.timer) {
+      clearInterval(this.timer)
+    }
+  },
   methods: {
     queryGames() {
       this.$store.dispatch('ListGamesAndOnlineCount').then(resp => {

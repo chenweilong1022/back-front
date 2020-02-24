@@ -112,22 +112,22 @@ export default {
     },
     reasonFilter(reason) {
       switch (reason) {
-        case 0:
+        case '0':
           return '游戏结算'
-        case 1:
+        case '1':
           return '银行存取款'
-        case 3:
+        case '3':
           return '赠送礼金'
-        case 5:
+        case '5':
           return '提现退还'
-        case 6:
+        case '6':
           return '活动赠送'
-        case 10:
+        case '10':
           return '代理返佣'
-        case 99:
+        case '99':
           return '充值/兑换'
         default:
-          return '未知'
+          return reason
       }
     }
   },
