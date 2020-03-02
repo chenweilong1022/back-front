@@ -108,7 +108,7 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogNewOrEditVisible = false">取消</el-button>
+        <el-button @click="cancel">取消</el-button>
         <el-button :loading="saveBtnLoading" type="primary" @click="saveData">保存</el-button>
       </div>
     </el-dialog>
@@ -195,12 +195,17 @@ export default {
       this.queryInterval()
     },
     changeRatio(data) {
+      clearInterval(this.timer)
       this.dialogNewOrEditVisible = true
       this.formData = {
         userid: data.userid,
         room: data.room,
         luckyRatio: data.luckyRatio
       }
+    },
+    cancel() {
+      this.dialogNewOrEditVisible = false
+      this.queryInterval()
     },
     saveData() {
       this.$refs['dialogForm'].validate(valid => {
