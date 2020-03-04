@@ -6,6 +6,9 @@
           <el-form-item label="条件">
             <el-input v-model="filterForm.searchKey"/>
           </el-form-item>
+          <el-form-item label="路由">
+            <el-input v-model="filterForm.operation"/>
+          </el-form-item>
           <el-button type="primary" icon="el-icon-search" class="btn-form" @click="query">查询</el-button>
           <el-button type="primary" icon="el-icon-plus" class="btn-form" @click="showNewPage">新增</el-button>
         </el-form-item>
@@ -39,7 +42,7 @@
           {{ scope.row.hostUrl }}
         </template>
       </el-table-column>
-      <el-table-column align="center" label="用户操作">
+      <el-table-column align="center" label="路由">
         <template slot-scope="scope">
           {{ scope.row.operation }}
         </template>
@@ -162,7 +165,8 @@ export default {
         enabled: 1,
         pageNo: 1,
         pageSize: 10,
-        searchKey: ''
+        searchKey: '',
+        operation: ''
       },
       list: null,
       listLoading: false,
