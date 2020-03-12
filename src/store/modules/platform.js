@@ -115,9 +115,9 @@ const platform = {
         })
       })
     },
-    DeleteNotice({ commit }, noticeId) {
+    DeleteNotice({ commit, rootState }, noticeId) {
       return new Promise((resolve, reject) => {
-        PlatformApi.deleteNotice(noticeId).then(resp => {
+        PlatformApi.deleteNotice(noticeId,rootState.user.managerId).then(resp => {
           resolve(resp)
         }).catch(err => {
           reject(err)

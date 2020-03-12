@@ -139,12 +139,15 @@ export function unpublishNotice(noticeId, managerId) {
   })
 }
 
-export function deleteNotice(noticeId) {
+export function deleteNotice(noticeId, managerId) {
   return request({
     url: '/platform/notices/' + noticeId,
     method: 'delete',
     headers: {
       'api-version': 'v1'
+    },
+    data: {
+      managerId
     }
   })
 }
