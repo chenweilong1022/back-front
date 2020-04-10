@@ -32,13 +32,14 @@
         <shbycard ref="shbycard"></shbycard>
         <brnncard ref="brnncard"></brnncard>
         <qznncard ref="qznncard"></qznncard>
+        <tbnncard ref="tbnncard"></tbnncard>
       </el-card>
     </el-row>
   </div>
 </template>
 
 <script>
-  import { bjlcard, lhcard, jdjlcard, jdslcard, jdnncard, dntgcard, shbycard, brnncard, qznncard } from './card'
+  import { bjlcard, lhcard, jdjlcard, jdslcard, jdnncard, dntgcard, shbycard, brnncard, qznncard, tbnncard } from './card'
 export default {
   name: 'RobotManage',
   components: {
@@ -50,7 +51,8 @@ export default {
     dntgcard,
     shbycard,
     brnncard,
-    qznncard
+    qznncard,
+    tbnncard
   },
   filters: {
     moneyFilter(money) {
@@ -126,8 +128,9 @@ export default {
         this.card = this.$refs.brnncard
       } else if (resp.data.cardName === 'qznncard') {
         this.card = this.$refs.qznncard
+      } else if (resp.data.cardName === 'tbnncard') {
+        this.card = this.$refs.tbnncard
       }
-      console.log(resp + '3')
     },
     saveData() {
       this.$confirm('此操作将更新机器人配置，是否继续?', '提示', {

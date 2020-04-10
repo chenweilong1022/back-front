@@ -31,7 +31,7 @@
                 {{ scope.row.gold | moneyFilter }}
               </template>
             </el-table-column>
-            <el-table-column align="center" label="操作">
+            <el-table-column v-if="operateFlag()" align="center" label="操作">
               <template slot-scope="scope">
                 <el-button type="text" @click="resetRobot(scope.row.uid)">重置机器人</el-button>
                 <el-button type="text" @click="delRobot(scope.row)">删除机器人</el-button>
@@ -133,6 +133,12 @@ export default {
     // this.queryRoomIds()
   },
   methods: {
+    operateFlag() {
+      const arr = [132, 133]
+      console.log(!arr.includes(this.filterForm.roomId / 100))
+      console.log(this.filterForm.roomId / 100)
+      return !arr.includes(Math.floor(this.filterForm.roomId / 100))
+    },
     watchUrl() {
       const loading = this.$loading({
         target: '#content',
