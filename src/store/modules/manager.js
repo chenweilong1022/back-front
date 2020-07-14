@@ -83,6 +83,15 @@ const manager = {
         })
       })
     },
+    Googlecode({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        ManagerApi.googlecode(data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
     IndexCard({ commit }) {
       return new Promise((resolve, reject) => {
         ManagerApi.indexCard1().then(response => {

@@ -91,6 +91,17 @@ export function authenticate(data) {
   })
 }
 
+export function googlecode(data) {
+  return request({
+    url: '/zdconfig/check/googlecode',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: data
+  })
+}
+
 export function indexCard1() {
   return request({
     url: '/index/indexCard',

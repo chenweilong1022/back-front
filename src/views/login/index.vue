@@ -23,7 +23,7 @@
           <svg-icon icon-class="eye" />
         </span>
       </el-form-item>
-      <el-form-item>
+      <el-form-item v-if="showGoogleCode">
         <el-input
           v-model="loginForm.googleCode"
           name="googleCode"
@@ -61,6 +61,7 @@ export default {
       }
     }
     return {
+      showGoogleCode: false,
       loginForm: {
         // username: 'administ',
         // password: '123456789qaz'
@@ -76,6 +77,9 @@ export default {
       pwdType: 'password'
     }
   },
+  created() {
+    this.checkGoogleCode();
+  },
   methods: {
     showPwd() {
       if (this.pwdType === 'password') {
@@ -83,6 +87,11 @@ export default {
       } else {
         this.pwdType = 'password'
       }
+    },
+    checkGoogleCode() {
+      this.$store.dispatch('Googlecode', {}).then((res) => {
+        this.showGoogleCode = res.data
+      })
     },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
