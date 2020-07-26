@@ -43,31 +43,67 @@
           {{ scope.row.nickname }}
         </template>
       </el-table-column>
-      <el-table-column align="center" label="返佣总金额">
+
+      <el-table-column align="center" label="一代业绩">
         <template slot-scope="scope">
-          {{ scope.row.totalRebate | moneyFilter }}
+          {{ scope.row.firstBonus | moneyFilter }}
         </template>
       </el-table-column>
-      <el-table-column align="center" label="业绩总额">
+
+      <el-table-column align="center" label="一代流水">
+        <template slot-scope="scope">
+          {{ scope.row.firstPerformance | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="二代业绩">
+        <template slot-scope="scope">
+          {{ scope.row.secondBonus | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="二代流水">
+        <template slot-scope="scope">
+          {{ scope.row.secondPerformance | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="三代业绩">
+        <template slot-scope="scope">
+          {{ scope.row.thirdBonus | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="三代流水">
+        <template slot-scope="scope">
+          {{ scope.row.thirdPerformance | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="无限代业绩">
+        <template slot-scope="scope">
+          {{ scope.row.unlimitBonus | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="无限代流水">
+        <template slot-scope="scope">
+          {{ scope.row.unlimitPerformance | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="团队业绩">
+        <template slot-scope="scope">
+          {{ scope.row.totalBonus | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="团队流水">
         <template slot-scope="scope">
           {{ scope.row.totalPerformance | moneyFilter }}
         </template>
       </el-table-column>
-      <el-table-column align="center" label="自营业绩">
-        <template slot-scope="scope">
-          {{ scope.row.performance | moneyFilter }}
-        </template>
-      </el-table-column>
-      <el-table-column align="center" label="直营业绩">
-        <template slot-scope="scope">
-          {{ scope.row.directPerformance | moneyFilter }}
-        </template>
-      </el-table-column>
-      <el-table-column align="center" label="团队业绩">
-        <template slot-scope="scope">
-          {{ scope.row.teamPerformance | moneyFilter }}
-        </template>
-      </el-table-column>
+
       <el-table-column align="center" label="直属下线">
         <template slot-scope="scope">
           <i style="text-decoration: underline; font-style: normal; font-weight: bold;">{{ scope.row.underCount }}</i>人
@@ -93,31 +129,68 @@
           {{ scope.row.type }}
         </template>
       </el-table-column>
-      <el-table-column align="center" label="总业绩">
+
+
+      <el-table-column align="center" label="一代业绩">
         <template slot-scope="scope">
-          {{ scope.row.totalAllPerformance | moneyFilter }}
+          {{ scope.row.firstBonus | moneyFilter }}
         </template>
       </el-table-column>
-      <el-table-column align="center" label="总返佣">
+
+      <el-table-column align="center" label="一代流水">
         <template slot-scope="scope">
-          {{ scope.row.totalRebate | moneyFilter }}
+          {{ scope.row.firstPerformance | moneyFilter }}
         </template>
       </el-table-column>
-      <el-table-column align="center" label="总自营业绩">
+
+      <el-table-column align="center" label="二代业绩">
+        <template slot-scope="scope">
+          {{ scope.row.secondBonus | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="二代流水">
+        <template slot-scope="scope">
+          {{ scope.row.secondPerformance | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="三代业绩">
+        <template slot-scope="scope">
+          {{ scope.row.thirdBonus | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="三代流水">
+        <template slot-scope="scope">
+          {{ scope.row.thirdPerformance | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="无限代业绩">
+        <template slot-scope="scope">
+          {{ scope.row.unlimitBonus | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="无限代流水">
+        <template slot-scope="scope">
+          {{ scope.row.unlimitPerformance | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="团队业绩">
+        <template slot-scope="scope">
+          {{ scope.row.totalBonus | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="团队流水">
         <template slot-scope="scope">
           {{ scope.row.totalPerformance | moneyFilter }}
         </template>
       </el-table-column>
-      <el-table-column align="center" label="总直营业绩">
-        <template slot-scope="scope">
-          {{ scope.row.totalDirectPerformance | moneyFilter }}
-        </template>
-      </el-table-column>
-      <el-table-column align="center" label="总团队业绩">
-        <template slot-scope="scope">
-          {{ scope.row.totalTeamPerformance | moneyFilter }}
-        </template>
-      </el-table-column>
+
       <el-table-column align="center" label="总代理人数">
         <template slot-scope="scope">
           {{ scope.row.totalAgentCount }}

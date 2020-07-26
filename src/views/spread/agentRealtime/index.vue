@@ -54,22 +54,63 @@
       </el-table-column>
       <el-table-column align="right" label="业绩信息">
         <template slot-scope="scope">
+
+          <!--//CREATE TABLE `tbl_agent_realtime` (
+//  `user_id` bigint(20) NOT NULL COMMENT '用户id',
+//  `super_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '上级id',
+//  `under_count` int(11) NOT NULL DEFAULT '0' COMMENT '直属下线人数',
+//  `first_performance` bigint(20) NOT NULL DEFAULT '0' COMMENT '一代流水',
+//  `first_bonus` bigint(20) NOT NULL DEFAULT '0' COMMENT '一代业绩',
+//  `second_performance` bigint(20) NOT NULL DEFAULT '0' COMMENT '二代流水',
+//  `second_bonus` bigint(20) NOT NULL DEFAULT '0' COMMENT '二代业绩',
+//  `third_performance` bigint(20) NOT NULL DEFAULT '0' COMMENT '三代流水',
+//  `third_bonus` bigint(20) NOT NULL DEFAULT '0' COMMENT '三代业绩',
+//  `unlimit_performance` bigint(20) NOT NULL DEFAULT '0' COMMENT '无限代流水',
+//  `unlimit_bonus` bigint(20) NOT NULL DEFAULT '0' COMMENT '无限代业绩',
+//  PRIMARY KEY (`user_id`)
+//) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='实时代理记录表';-->
+
           <el-row>
-            <el-col :span="12">业绩总额：</el-col>
-            <el-col :span="12">{{ scope.row.totalPerformance | moneyFilter }}</el-col>
+            <el-col :span="6">一代业绩：</el-col>
+            <el-col :span="6">{{ scope.row.firstBonus | moneyFilter }}</el-col>
+            <el-col :span="6">一代流水：</el-col>
+            <el-col :span="6">{{ scope.row.firstPerformance | moneyFilter }}</el-col>
           </el-row>
+
           <el-row>
-            <el-col :span="12">自营业绩：</el-col>
-            <el-col :span="12">{{ scope.row.performanc | moneyFilter }}</el-col>
+            <el-col :span="6">二代业绩：</el-col>
+            <el-col :span="6">{{ scope.row.secondBonus | moneyFilter }}</el-col>
+            <el-col :span="6">二代流水：</el-col>
+            <el-col :span="6">{{ scope.row.secondPerformance | moneyFilter }}</el-col>
           </el-row>
+
           <el-row>
-            <el-col :span="12">直营业绩：</el-col>
-            <el-col :span="12">{{ scope.row.directPerformance | moneyFilter }}</el-col>
+            <el-col :span="6">三代业绩：</el-col>
+            <el-col :span="6">{{ scope.row.thirdBonus | moneyFilter }}</el-col>
+            <el-col :span="6">三代流水：</el-col>
+            <el-col :span="6">{{ scope.row.thirdPerformance | moneyFilter }}</el-col>
           </el-row>
+
           <el-row>
-            <el-col :span="12">团队业绩：</el-col>
-            <el-col :span="12">{{ scope.row.teamPerformance | moneyFilter }}</el-col>
+            <el-col :span="6">无限代业绩：</el-col>
+            <el-col :span="6">{{ scope.row.unlimitBonus | moneyFilter }}</el-col>
+            <el-col :span="6">无限代流水：</el-col>
+            <el-col :span="6">{{ scope.row.unlimitPerformance | moneyFilter }}</el-col>
           </el-row>
+
+          <el-row>
+            <el-col :span="6">团队业绩：</el-col>
+            <el-col :span="6">{{ scope.row.totalBonus | moneyFilter }}</el-col>
+            <el-col :span="6">团队流水：</el-col>
+            <el-col :span="6">{{ scope.row.totalPerformance | moneyFilter }}</el-col>
+          </el-row>
+
+          <!--<el-row>-->
+            <!--<el-col :span="6">一代业绩：</el-col>-->
+            <!--<el-col :span="6">{{ scope.row.first_bonus | moneyFilter }}</el-col>-->
+            <!--<el-col :span="6">一代流水：</el-col>-->
+            <!--<el-col :span="6">{{ scope.row.first_performance | moneyFilter }}</el-col>-->
+          <!--</el-row>-->
         </template>
       </el-table-column>
       <el-table-column align="center" label="直属下线">

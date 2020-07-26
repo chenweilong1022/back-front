@@ -95,9 +95,11 @@
           <el-tag :type="scope.row.lock | statusFilter">{{ scope.row.lock | userStateFilter }}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column align="center" label="是否设置保底">
+      <el-table-column align="center" label="游戏信息">
         <template slot-scope="scope">
-          {{ scope.row.saleRate > 0 ? '每万'+ scope.row.saleRate * 10000 : '未设置' }}
+          <!--{{ scope.row.saleRate > 0 ? '每万'+ scope.row.saleRate * 10000 : '未设置' }}-->
+          今日输赢:{{scope.row | getWinningMoney}}<br>
+          今日流水:{{scope.row | getFlowVolume}}
         </template>
       </el-table-column>
       <el-table-column label="注册时间" align="center">
@@ -119,7 +121,7 @@
       <el-table-column label="操作" align="center">
         <template slot-scope="scope">
           <el-button v-if="scope.row.sendGift === 0" size="mini" @click="giftMoney(scope.row)">赠送礼金</el-button>
-          <el-button size="mini" @click="setSaleRate(scope.row)">设置保底</el-button>
+          <!--<el-button size="mini" @click="setSaleRate(scope.row)">设置保底</el-button>-->
           <el-button size="mini" @click="setUpSpread(scope.row)">设置上级代理</el-button>
         </template>
       </el-table-column>
@@ -136,6 +138,18 @@
 export default {
   name: 'PlayerListPage',
   filters: {
+    getWinningMoney(row) {
+      if (row.gameWinningDetailBO) {
+        return row.gameWinningDetailBO.winningMoney;
+      }
+      return 0;
+    },
+    getFlowVolume(row) {
+      if (row.gameWinningDetailBO) {
+        return row.gameWinningDetailBO.flowVolume;
+      }
+      return 0;
+    },
     parseTime(time) {
       return parseTime(time)
     },
