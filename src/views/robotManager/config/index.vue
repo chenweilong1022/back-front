@@ -33,13 +33,14 @@
         <brnncard ref="brnncard"></brnncard>
         <qznncard ref="qznncard"></qznncard>
         <tbnncard ref="tbnncard"></tbnncard>
+        <jxlwcard ref="jxlwcard"></jxlwcard>
       </el-card>
     </el-row>
   </div>
 </template>
 
 <script>
-  import { bjlcard, lhcard, jdjlcard, jdslcard, jdnncard, dntgcard, shbycard, brnncard, qznncard, tbnncard } from './card'
+  import { bjlcard, lhcard, jdjlcard, jdslcard, jdnncard, dntgcard, shbycard, brnncard, qznncard, tbnncard, jxlwcard } from './card'
 export default {
   name: 'RobotManage',
   components: {
@@ -52,7 +53,8 @@ export default {
     shbycard,
     brnncard,
     qznncard,
-    tbnncard
+    tbnncard,
+    jxlwcard
   },
   filters: {
     moneyFilter(money) {
@@ -100,6 +102,8 @@ export default {
           console.log(resp + '1')
           this.refChild(resp)
           this.card.baseGameConfigVo = resp.data.baseGameConfigVo
+          this.card.winRateControl = resp.data.winRateControlDTO
+          this.card.show = true
         }
         loading.close()
       }).catch(() => loading.close())
@@ -130,6 +134,8 @@ export default {
         this.card = this.$refs.qznncard
       } else if (resp.data.cardName === 'tbnncard') {
         this.card = this.$refs.tbnncard
+      } else if (resp.data.cardName === 'jxlwcard') {
+        this.card = this.$refs.jxlwcard
       }
     },
     saveData() {
@@ -137,13 +143,14 @@ export default {
         confirmButtonText: '确定',
         cancelButtonText: '取消'
       }).then(() => {
-        this.saveAction(this.card.baseGameConfigVo)
+        this.saveAction(this.card.baseGameConfigVo, this.card.winRateControl)
       })
     },
-    saveAction(data) {
+    saveAction(data, winRateControl) {
       this.$store.dispatch('UpdateRobotConfig', {
         roomId: this.filterForm.roomId,
-        config: JSON.stringify(data)
+        config: JSON.stringify(data),
+        winRateControlDTO: winRateControl
       }).then(resp => {
         this.$message({
           message: resp.msg,
