@@ -114,6 +114,8 @@ export default {
       console.log(resp + '2')
       if (this.card) {
         this.card.baseGameConfigVo = ''
+        this.card.winRateControl = ''
+        this.card.show = false
       }
       console.log(resp.data.cardName + '1')
       if (resp.data.cardName === 'bjlcard') {
