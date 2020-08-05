@@ -140,13 +140,13 @@ export default {
   filters: {
     getWinningMoney(row) {
       if (row.playersWinLoseVO) {
-        return row.playersWinLoseVO.win;
+        return row.playersWinLoseVO.win + row.playersWinLoseVO.lose;
       }
       return 0;
     },
     getFlowVolume(row) {
       if (row.playersWinLoseVO) {
-        return row.playersWinLoseVO.lose;
+        return row.playersWinLoseVO.lose.abs() + row.playersWinLoseVO.win.abs();
       }
       return 0;
     },
