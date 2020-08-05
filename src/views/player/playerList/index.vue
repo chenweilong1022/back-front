@@ -139,14 +139,14 @@ export default {
   name: 'PlayerListPage',
   filters: {
     getWinningMoney(row) {
-      if (row.gameWinningDetailBO) {
-        return row.gameWinningDetailBO.winningMoney;
+      if (row.playersWinLoseVO) {
+        return row.playersWinLoseVO.win;
       }
       return 0;
     },
     getFlowVolume(row) {
-      if (row.gameWinningDetailBO) {
-        return row.gameWinningDetailBO.flowVolume;
+      if (row.playersWinLoseVO) {
+        return row.playersWinLoseVO.lose;
       }
       return 0;
     },
