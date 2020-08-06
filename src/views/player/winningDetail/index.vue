@@ -16,7 +16,7 @@
       highlight-current-row>
       <el-table-column align="center" label="玩家信息">
         <template slot-scope="scope">
-          {{ scope.row.nickname }}({{ scope.row.showId }})
+          {{ scope.row.nickname }}({{ scope.row.userId }})
         </template>
       </el-table-column>
       <el-table-column align="center" label="游戏名称">

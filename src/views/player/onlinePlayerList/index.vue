@@ -150,7 +150,7 @@ export default {
       listTotal: 10,
       dialogNewOrEditVisible: false,
       formData: {},
-      controlGames: [127, 151, 152],
+      controlGames: [127, 151, 152, 128, 126],
       dialogRules: {
         luckyRatio: [{ required: true, trigger: 'blur', validator: validateNumber }]
       },

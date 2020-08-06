@@ -149,12 +149,10 @@ export default {
         confirmButtonText: '确定',
         cancelButtonText: '取消'
       }).then(() => {
-        alert('1')
         this.saveAction(this.card.baseGameConfigVo, this.card.winRateControl)
       })
     },
     saveAction(data, winRateControl) {
-      alert('1')
       this.$store.dispatch('UpdateRobotConfig', {
         roomId: this.filterForm.roomId,
         config: JSON.stringify(data),

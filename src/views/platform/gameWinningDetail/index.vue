@@ -39,7 +39,7 @@
       highlight-current-row>
       <el-table-column align="center" label="游戏名称">
         <template slot-scope="scope">
-          {{ scope.row.gameName }}
+          {{ scope.row.gameName }}({{scope.row.roomId}})
         </template>
       </el-table-column>
       <el-table-column align="center" label="游戏人数" prop="gamePersonCount">
@@ -51,11 +51,6 @@
       <el-table-column align="center" label="流水量" prop="flowVolume">
         <template slot-scope="scope">
           {{ scope.row.flowVolume | moneyFilter }}
-        </template>
-      </el-table-column>
-      <el-table-column align="center" label="税收总和" prop="totalTax">
-        <template slot-scope="scope">
-          {{ scope.row.totalTax | moneyFilter }}
         </template>
       </el-table-column>
       <el-table-column align="center" label="游戏输赢" prop="winningMoney">
