@@ -146,7 +146,7 @@ export default {
     },
     getFlowVolume(row) {
       if (row.playersWinLoseVO) {
-        return row.playersWinLoseVO.flowVolume;
+        return row.playersWinLoseVO.bet;
       }
       return 0;
     },
