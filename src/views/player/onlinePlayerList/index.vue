@@ -66,8 +66,8 @@
       <el-table-column label="当日输赢" align="center">
         <el-table-column label="总输赢" align="center">
           <template slot-scope="scope">
-            <span :style="scope.row.todayWinningGold > 0 ? 'color:red;' : 'color:green;'">{{ scope.row.todayWinningGold | moneyFilter }}</span><br>
-            <span :style="scope.row.totalWinningGold > 0 ? 'color:red;' : 'color:green;'">{{ scope.row.totalWinningGold | moneyFilter }}</span>
+            <span :style="scope.row.todayWinningGold > 0 ? 'color:red;' : 'color:green;'">{{ scope.row | getWinningMoney }}</span><br>
+            <span :style="scope.row.totalWinningGold > 0 ? 'color:red;' : 'color:green;'">{{ scope.row | getTotalWinningMoney }}</span>
           </template>
         </el-table-column>
       </el-table-column>
@@ -124,7 +124,21 @@ export default {
         return money / 100
       }
       return 0
-    }
+    },
+    getWinningMoney(row) {
+
+      if (row.playersWinLoseVO) {
+        console.log(row.playersWinLoseVO.winningMoney)
+        return row.playersWinLoseVO.winningMoney;
+      }
+      return 0;
+    },
+    getTotalWinningMoney(row) {
+      if (row.totalPlayersWinLoseVO) {
+        return row.totalPlayersWinLoseVO.winningMoney;
+      }
+      return 0;
+    },
   },
   data() {
     const validateNumber = (rule, value, callback) => {
@@ -150,7 +164,7 @@ export default {
       listTotal: 10,
       dialogNewOrEditVisible: false,
       formData: {},
-      controlGames: [127, 151, 152, 128, 126],
+      controlGames: [127, 151, 152, 128, 126, 142, 143],
       dialogRules: {
         luckyRatio: [{ required: true, trigger: 'blur', validator: validateNumber }]
       },

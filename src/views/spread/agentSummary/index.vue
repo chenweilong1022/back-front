@@ -123,6 +123,7 @@
       size="mini"
       border
       fit
+      :key="Math.random()"
       highlight-current-row>
       <el-table-column align="center" label="合计类型">
         <template slot-scope="scope">
@@ -258,28 +259,44 @@ export default {
       // 小计
       if (this.list) {
         const data = this.tableTotal[0]
-        let totalAllPerformance = 0
-        let totalRebate = 0
+        let firstPerformance = 0
+        let secondPerformance = 0
+        let thirdPerformance = 0
+        let unlimitPerformance = 0
+        let firstBonus = 0
+        let secondBonus = 0
+        let thirdBonus = 0
+        let unlimitBonus = 0
+        let totalBonus = 0
         let totalPerformance = 0
-        let totalDirectPerformance = 0
-        let totalTeamPerformance = 0
+
         let persons = []
         this.list.forEach(item => {
           if (persons.indexOf(item.userId) < 0) {
             persons = persons.concat(item.userId)
           }
-          totalAllPerformance += item.totalPerformance
-          totalRebate += item.totalRebate
-          totalPerformance += item.performance
-          totalDirectPerformance += item.directPerformance
-          totalTeamPerformance += item.teamPerformance
+          firstPerformance += item.firstPerformance
+          secondPerformance += item.secondPerformance
+          thirdPerformance += item.thirdPerformance
+          unlimitPerformance += item.unlimitPerformance
+          firstBonus += item.firstBonus
+          secondBonus += item.secondBonus
+          thirdBonus += item.thirdBonus
+          unlimitBonus += item.unlimitBonus
+          totalBonus += item.totalBonus
+          totalPerformance += item.totalPerformance
         })
-        data.totalAllPerformance = totalAllPerformance
-        data.totalRebate = totalRebate
-        data.totalPerformance = totalPerformance
-        data.totalDirectPerformance = totalDirectPerformance
-        data.totalTeamPerformance = totalTeamPerformance
+        data.firstPerformance = firstPerformance
+        data.secondPerformance = secondPerformance
+        data.thirdPerformance = thirdPerformance
+        data.unlimitPerformance = unlimitPerformance
+        data.firstBonus = firstBonus
+        data.secondBonus = secondBonus
+        data.thirdBonus = thirdBonus
+        data.unlimitBonus = unlimitBonus
         data.totalAgentCount = persons.length
+        data.totalBonus = totalBonus
+        data.totalPerformance = totalPerformance
       }
 
       // 总计
@@ -287,12 +304,16 @@ export default {
         const summary = resp.data
         const data = this.tableTotal[1]
 
-        data.totalAllPerformance = summary.totalAllPerformance
-        data.totalRebate = summary.totalRebate
+        data.firstPerformance = summary.firstPerformance
+        data.secondPerformance = summary.secondPerformance
+        data.thirdPerformance = summary.thirdPerformance
+        data.unlimitPerformance = summary.unlimitPerformance
+        data.firstBonus = summary.firstBonus
+        data.secondBonus = summary.secondBonus
+        data.thirdBonus = summary.thirdBonus
+        data.unlimitBonus = summary.unlimitBonus
+        data.totalBonus = summary.totalBonus
         data.totalPerformance = summary.totalPerformance
-        data.totalDirectPerformance = summary.totalDirectPerformance
-        data.totalTeamPerformance = summary.totalTeamPerformance
-        data.totalAgentCount = summary.totalAgentCount
         this.listLoading = false
       }).catch(() => {
         this.listLoading = false
