@@ -124,6 +124,87 @@
     <div class="pagination-container">
       <el-pagination :current-page.sync="filterForm.pageNo" :page-sizes="[10,20,30, 50]" :page-size="filterForm.pageSize" :total="listTotal" background layout="total, sizes, prev, pager, next, jumper" @size-change="handleSizeChange" @current-change="handleCurrentChange"/>
     </div>
+
+
+    <el-table
+      v-loading="listLoading"
+      :data="listAll"
+      style="margin-top: 30px;"
+      size="mini"
+      border
+      fit
+      :key="Math.random()"
+      highlight-current-row>
+
+
+      <el-table-column align="center" label="合计类型">
+        <template slot-scope="scope">
+          {{ scope.row.type }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="一代业绩">
+        <template slot-scope="scope">
+          {{ scope.row.firstBonus | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="一代流水">
+        <template slot-scope="scope">
+          {{ scope.row.firstPerformance | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="二代业绩">
+        <template slot-scope="scope">
+          {{ scope.row.secondBonus | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="二代流水">
+        <template slot-scope="scope">
+          {{ scope.row.secondPerformance | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="三代业绩">
+        <template slot-scope="scope">
+          {{ scope.row.thirdBonus | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="三代流水">
+        <template slot-scope="scope">
+          {{ scope.row.thirdPerformance | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="无限代业绩">
+        <template slot-scope="scope">
+          {{ scope.row.unlimitBonus | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="无限代流水">
+        <template slot-scope="scope">
+          {{ scope.row.unlimitPerformance | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="团队业绩">
+        <template slot-scope="scope">
+          {{ scope.row.totalBonus | moneyFilter }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="团队流水">
+        <template slot-scope="scope">
+          {{ scope.row.totalPerformance | moneyFilter }}
+        </template>
+      </el-table-column>
+    </el-table>
+
+
   </div>
 </template>
 
@@ -158,12 +239,14 @@ export default {
         pageSize: 10
       },
       list: null,
+      listAll: null,
       listLoading: false,
       listTotal: 10
     }
   },
   created() {
     this.query()
+    this.queryTotal()
   },
   methods: {
     query() {
@@ -171,6 +254,17 @@ export default {
       this.$store.dispatch('ListAgentRealtimeByQry', { ...this.filterForm, superId: this.$route.query.superId }).then(resp => {
         this.list = resp.data
         this.listTotal = resp.totalCount
+        this.listLoading = false
+
+        this.queryTotal()
+      }).catch(() => {
+        this.listLoading = false
+      })
+    },
+    queryTotal() {
+      this.listLoading = true
+      this.$store.dispatch('ListTotalAgentRealtimeByQry', { ...this.filterForm, superId: this.$route.query.superId }).then(resp => {
+        this.listAll = resp.data
         this.listLoading = false
       }).catch(() => {
         this.listLoading = false

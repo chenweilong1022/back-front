@@ -16,6 +16,15 @@ const agent = {
         })
       })
     },
+    ListTotalAgentRealtimeByQry({ commit }, query) {
+      return new Promise((resolve, reject) => {
+        AgentApi.listTotalAgentRealtimeByQry(query).then(resp => {
+          resolve(resp)
+        }).catch(err => {
+          reject(err)
+        })
+      })
+    },
     ListAgentRecordByQry({ commit }, query) {
       return new Promise((resolve, reject) => {
         AgentApi.listAgentRecordByQry(query).then(resp => {

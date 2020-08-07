@@ -16,6 +16,17 @@ export function listAgentRealtimeByQry(query) {
   })
 }
 
+export function listTotalAgentRealtimeByQry(query) {
+  return request({
+    url: '/agent/realtime/query/total',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: query
+  })
+}
+
 export function listAgentRecordByQry(query) {
   return request({
     url: '/agent/record/query',
