@@ -102,7 +102,7 @@
         </el-form-item>
         <el-form-item v-if="controlGames.some(game => Math.floor(formData.room/100) === game)" label="幸运值" prop="luckyRatio">
           <el-radio-group v-model="formData.luckyRatio">
-            <el-radio :label="1">正常模式</el-radio>
+            <el-radio :label="0.98">正常模式</el-radio>
             <el-radio :label="0">必杀模式</el-radio>
           </el-radio-group>
         </el-form-item>
