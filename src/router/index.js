@@ -747,6 +747,16 @@ export const asyncRouterMap = [
         }
       },
       {
+        path: 'agentTable',
+        name: 'agentTable',
+        component: () => import('@/views/player/agentTable'),
+        meta: {
+          title: '代理团队表',
+          path: '/player/agentTable',
+          auth: true
+        }
+      },
+      {
         path: 'agentRealtime',
         name: 'AgentRealtime',
         component: () => import('@/views/spread/agentRealtime'),

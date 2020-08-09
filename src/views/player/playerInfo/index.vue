@@ -93,6 +93,7 @@
             <el-button v-if="gameScoreBtn" type="text" @click="queryGameStatistics">游戏输赢查询</el-button>
             <el-button v-if="sameAddressPlayerBtn" type="text" @click="querySameAddressPlayers">相同地址登录帐号</el-button>
             <el-button type="text" @click="queryAgentTree">查看下级代理</el-button>
+            <el-button type="text" @click="queryAgentTable">查看下级团队表</el-button>
           </el-form-item>
         </el-form>
 
@@ -167,7 +168,11 @@
         </el-dialog>
 
         <el-dialog :visible.sync="dialogAgentTreeVisible" title="代理树状图" width="40%">
-          <agent-tree ref="agentTree" :saler="playerInfo.saler"></agent-tree>
+          <agent-tree ref="agentTree" :userid="playerInfo.userid"></agent-tree>
+        </el-dialog>
+
+        <el-dialog :visible.sync="dialogAgentTableVisible" title="代理团队表" width="60%">
+          <agent-table ref="agentTable" :userid="playerInfo.userid"></agent-table>
         </el-dialog>
 
         <el-dialog :visible.sync="dialogGameStatisticsVisible" title="玩家游戏输赢统计" width="40%">
@@ -181,6 +186,8 @@
         <el-dialog :visible.sync="dialogUnderSpreadUsersVisible" title="下线玩家列表" width="40%">
           <UnderSpreadUsers ref="underSpreadUsers" :player-id="playerInfo.userid" />
         </el-dialog>
+
+
       </div>
     </el-card>
 
@@ -193,6 +200,7 @@ import GameStatistics from './components/GameStatistics'
 import SameAddressPlayer from './components/SameAddressPlayer'
 import UnderSpreadUsers from './components/UnderSpreadUsers'
 import AgentTree from '../agentTree/index'
+import AgentTable from '../agentTable/index'
 export default {
   name: 'PlayerInfoPage',
   components: {
@@ -200,7 +208,8 @@ export default {
     GameStatistics,
     SameAddressPlayer,
     UnderSpreadUsers,
-    AgentTree
+    AgentTree,
+    AgentTable
   },
   filters: {
     statusFilter(lock) {
@@ -261,6 +270,7 @@ export default {
       dialogGameLogVisible: false,
       dialogGameStatisticsVisible: false,
       dialogAgentTreeVisible: false,
+      dialogAgentTableVisible: false,
       dialogSameAddressVisible: false,
       dialogUnderSpreadUsersVisible: false
     }
@@ -413,6 +423,12 @@ export default {
       this.dialogAgentTreeVisible = true
       if (this.$refs.agentTree) {
         this.$refs.agentTree.init()
+      }
+    },
+    queryAgentTable() {
+      this.dialogAgentTableVisible = true
+      if (this.$refs.agentTable) {
+        this.$refs.agentTable.init()
       }
     },
     validateRole() {

@@ -1,5 +1,35 @@
 <template>
-  <el-tree :data="data" :props="defaultProps" @node-click="handleNodeClick"></el-tree>
+  <el-table
+    :data="data"
+    style="width: 100%;margin-bottom: 20px;"
+    row-key="showId"
+    border
+    :tree-props="{children: 'childrens', hasChildren: 'hasChildren'}">
+    <el-table-column
+      prop="showId"
+      label="showId"
+      sortable
+      width="180">
+    </el-table-column>
+    <el-table-column
+      prop="nickname"
+      label="用户名称"
+      sortable
+      width="180">
+    </el-table-column>
+    <el-table-column
+      prop="count"
+      label="直属人数"
+      sortable
+      width="180">
+    </el-table-column>
+    <el-table-column
+      prop="teamCount"
+      label="团队人数"
+      sortable
+      width="180">
+    </el-table-column>
+  </el-table>
 </template>
 
 <script>
