@@ -92,7 +92,7 @@
             <el-button v-if="goldChangeBtn" type="text">金币变更日志</el-button>
             <el-button v-if="gameScoreBtn" type="text" @click="queryGameStatistics">游戏输赢查询</el-button>
             <el-button v-if="sameAddressPlayerBtn" type="text" @click="querySameAddressPlayers">相同地址登录帐号</el-button>
-            <el-button v-if="isSpread" type="text" @click="queryUnderSpreadUsers">下线玩家列表</el-button>
+            <el-button type="text" @click="queryAgentTree">查看下级代理</el-button>
           </el-form-item>
         </el-form>
 
@@ -166,6 +166,10 @@
           <GameLog ref="gameLog" :player-id="playerInfo.userid" />
         </el-dialog>
 
+        <el-dialog :visible.sync="dialogAgentTreeVisible" title="代理树状图" width="40%">
+          <agent-tree ref="agentTree" :saler="playerInfo.saler"></agent-tree>
+        </el-dialog>
+
         <el-dialog :visible.sync="dialogGameStatisticsVisible" title="玩家游戏输赢统计" width="40%">
           <GameStatistics ref="gameStatistics" :player-id="playerInfo.userid" />
         </el-dialog>
@@ -188,13 +192,15 @@ import GameLog from './components/GameLog'
 import GameStatistics from './components/GameStatistics'
 import SameAddressPlayer from './components/SameAddressPlayer'
 import UnderSpreadUsers from './components/UnderSpreadUsers'
+import AgentTree from '../agentTree/index'
 export default {
   name: 'PlayerInfoPage',
   components: {
     GameLog,
     GameStatistics,
     SameAddressPlayer,
-    UnderSpreadUsers
+    UnderSpreadUsers,
+    AgentTree
   },
   filters: {
     statusFilter(lock) {
@@ -240,7 +246,7 @@ export default {
       resetPwdBtn: true,
       resetBankPwdBtn: true,
       lockBtn: true,
-      isSpread: false,
+      isSpread: true,
       setSpreadBtn: false,
       gameDiamondLogBtn: true,
       goldChangeBtn: false,
@@ -254,6 +260,7 @@ export default {
       listLoading: false,
       dialogGameLogVisible: false,
       dialogGameStatisticsVisible: false,
+      dialogAgentTreeVisible: false,
       dialogSameAddressVisible: false,
       dialogUnderSpreadUsersVisible: false
     }
@@ -402,10 +409,10 @@ export default {
         this.$refs.sameAddress.query()
       }
     },
-    queryUnderSpreadUsers() {
-      this.dialogUnderSpreadUsersVisible = true
-      if (this.$refs.underSpreadUsers) {
-        this.$refs.underSpreadUsers.query()
+    queryAgentTree() {
+      this.dialogAgentTreeVisible = true
+      if (this.$refs.agentTree) {
+        this.$refs.agentTree.init()
       }
     },
     validateRole() {

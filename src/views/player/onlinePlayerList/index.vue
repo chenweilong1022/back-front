@@ -95,6 +95,35 @@
       <el-pagination :current-page.sync="filterForm.pageNo" :page-sizes="[10,20,30, 50]" :page-size="filterForm.pageSize" :total="listTotal" background layout="total, sizes, prev, pager, next, jumper" @size-change="handleSizeChange" @current-change="handleCurrentChange"/>
     </div>
 
+
+
+    <el-table
+      v-loading="listLoading"
+      :data="totalGoldEntitys"
+      style="margin-top: 30px;"
+      size="mini"
+      border
+      fit
+      :key="Math.random()"
+      highlight-current-row>
+
+
+      <el-table-column align="center" label="合计类型">
+        <template slot-scope="scope">
+          {{ scope.row.type }}
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="总金币">
+        <template slot-scope="scope">
+          {{ scope.row.totalGold | moneyFilter }}
+        </template>
+      </el-table-column>
+
+    </el-table>
+
+
+
     <el-dialog :visible.sync="dialogNewOrEditVisible" title="调整幸运值" width="400px">
       <el-form ref="dialogForm" :model="formData" :rules="dialogRules" label-position="left" label-width="80px" style="margin-left:30px;">
         <el-form-item v-if="!controlGames.some(game => Math.floor(formData.room/100) === game)" label="幸运值" prop="luckyRatio">
@@ -162,6 +191,7 @@ export default {
       list: null,
       listLoading: false,
       listTotal: 10,
+      totalGoldEntitys: [],
       dialogNewOrEditVisible: false,
       formData: {},
       controlGames: [127, 151, 152, 128, 126, 142, 143],
@@ -173,7 +203,7 @@ export default {
   },
   created() {
     this.queryGames()
-    this.query()
+    // this.query()
     this.queryInterval()
   },
   beforeDestroy() {
@@ -187,11 +217,13 @@ export default {
         this.games = resp.data
       })
       this.query()
+      this.totalGold()
     },
     queryInterval() {
       if (this.timer) {
         clearInterval(this.timer)
       }
+      this.queryGames()
       this.timer = setInterval(this.queryGames, 5000)
     },
     query() {
@@ -199,6 +231,15 @@ export default {
       this.$store.dispatch('ListOnlinePlayerQry', this.filterForm).then(resp => {
         this.list = resp.data
         this.listTotal = resp.totalCount
+        this.listLoading = false
+      }).catch(() => {
+        this.listLoading = false
+      })
+    },
+    totalGold() {
+      this.listLoading = true
+      this.$store.dispatch('ListOnlineTotalGold', this.filterForm).then(resp => {
+        this.totalGoldEntitys = resp.data
         this.listLoading = false
       }).catch(() => {
         this.listLoading = false

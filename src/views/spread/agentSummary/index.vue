@@ -232,7 +232,7 @@ export default {
         pageNo: 1,
         pageSize: 10
       },
-      list: null,
+      list: [],
       listLoading: false,
       listTotal: 10,
       tableTotal: [

@@ -125,6 +125,17 @@ export function listOnlinePlayerQry(query) {
   })
 }
 
+export function listOnlineTotalGold(query) {
+  return request({
+    url: '/players/online/totalGold',
+    method: 'post',
+    headers: {
+      'api-version': 'v1'
+    },
+    data: query
+  })
+}
+
 export function updatePlayerLuckyRatio(data) {
   return request({
     url: '/players/online/luckyRatio',
@@ -226,6 +237,17 @@ export function getPlayerAccountById(playerId) {
     headers: {
       'api-version': 'v1'
     }
+  })
+}
+
+export function agentTree(query) {
+  return request({
+    url: '/zdgame/tblplayerinfo/agentTree',
+    method: 'get',
+    headers: {
+      'api-version': 'v1'
+    },
+    params: query
   })
 }
 

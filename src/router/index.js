@@ -737,6 +737,16 @@ export const asyncRouterMap = [
     },
     children: [
       {
+        path: 'agentTree',
+        name: 'agentTree',
+        component: () => import('@/views/player/agentTree'),
+        meta: {
+          title: '代理树状图',
+          path: '/player/agentTree',
+          auth: true
+        }
+      },
+      {
         path: 'agentRealtime',
         name: 'AgentRealtime',
         component: () => import('@/views/spread/agentRealtime'),

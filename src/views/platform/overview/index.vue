@@ -27,6 +27,9 @@
           <el-form-item label="平台财富总和">
             <label>{{ overview.totalGold | moneyFilter }}</label>
           </el-form-item>
+          <el-form-item label="在线玩家平台财富总和">
+            <label>{{ overview.onlineTotalGold | moneyFilter }}</label>
+          </el-form-item>
           <el-form-item label="冻结玩家财富总额">
             <label>{{ overview.lockUserGold | moneyFilter }}</label>
           </el-form-item>

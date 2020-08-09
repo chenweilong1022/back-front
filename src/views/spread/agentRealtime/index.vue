@@ -19,6 +19,8 @@
       :data="list"
       border
       fit
+      row-key="id"
+      :tree-props="treeProps"
       highlight-current-row>
       <el-table-column align="right" label="用户信息">
         <template slot-scope="scope">
@@ -232,14 +234,18 @@ export default {
   },
   data() {
     return {
+      treeProps: {
+        children: 'childrens',
+        hasChildren: 'hasChildren'
+      },
       filterForm: {
         showId: null,
         account: null,
         pageNo: 1,
         pageSize: 10
       },
-      list: null,
-      listAll: null,
+      list: [],
+      listAll: [],
       listLoading: false,
       listTotal: 10
     }

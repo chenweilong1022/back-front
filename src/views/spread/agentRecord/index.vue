@@ -2,15 +2,36 @@
   <div class="app-container">
     <div class="filter-container">
       <el-form ref="filterForm" :inline="true" :model="filterForm" size="mini">
+
+        <el-form-item v-if="showId" label="用户ID">
+          <label>{{ showId }}</label>
+        </el-form-item>
         <el-form-item label="用户ID">
           <el-input v-model="filterForm.showId"/>
         </el-form-item>
         <el-form-item label="用户帐号">
           <el-input v-model="filterForm.account" />
         </el-form-item>
+        <el-form-item label="上级id">
+          <el-input v-model="filterForm.superId"/>
+        </el-form-item>
         <el-form-item label="期次">
           <el-input v-model="filterForm.period" />
         </el-form-item>
+
+        <el-form-item>
+          <el-col :xs="24" :md="24" :lg="12">
+            <el-form-item label="起始时间" prop="startTime" style="margin-bottom: 0px;">
+              <el-date-picker v-model="filterForm.startTime" type="datetime" format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss" />
+            </el-form-item>
+          </el-col>
+          <el-col :xs="24" :md="24" :lg="12">
+            <el-form-item label="结束时间" prop="endTime" style="margin-bottom: 0px;">
+              <el-date-picker v-model="filterForm.endTime" type="datetime" format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss" />
+            </el-form-item>
+          </el-col>
+        </el-form-item>
+
         <el-form-item>
           <el-button type="primary" icon="el-icon-search" class="btn-form" @click="query">查询</el-button>
         </el-form-item>
@@ -21,8 +42,12 @@
       v-loading="listLoading"
       :data="list"
       border
+      row-key="id"
       fit
+      :tree-props="treeProps"
       highlight-current-row>
+      <!--<el-table-column align="center" prop="id" label="id">-->
+      <!--</el-table-column>-->
       <el-table-column align="center" label="期次">
         <template slot-scope="scope">
           {{ scope.row.period }}
@@ -105,7 +130,14 @@
       <el-table-column align="center" label="直属下线">
         <template slot-scope="scope">
           <i style="text-decoration: underline; font-style: normal; font-weight: bold;">{{ scope.row.underCount }}</i>人
-          <el-button v-if="scope.row.underCount !== 0" type="text" icon="el-icon-sort-down" @click="handleClick(scope.row)" />
+          <!--<el-button v-if="scope.row.underCount !== 0" type="text" icon="el-icon-sort-down" @click="handleClick(scope.row)" />-->
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="本期下线">
+        <template slot-scope="scope">
+          <i style="text-decoration: underline; font-style: normal; font-weight: bold;">{{ scope.row.childrenCount }}</i>人
+          <el-button v-if="scope.row.childrenCount !== 0" type="text" icon="el-icon-sort-down" @click="handleClick(scope.row)" />
         </template>
       </el-table-column>
     </el-table>
@@ -226,6 +258,7 @@
 </template>
 
 <script>
+  import { startTime, endTime } from '@/utils'
 export default {
   name: 'AgentRecord',
   filters: {
@@ -249,14 +282,22 @@ export default {
   },
   data() {
     return {
+      underCountTotal: null,
       filterForm: {
         showId: null,
         account: null,
         period: null,
         pageNo: 1,
-        pageSize: 10
+        pageSize: 10,
+        startTime: startTime(0),
+        endTime: endTime(0),
       },
-      list: null,
+      treeProps: {
+        children: 'childrens',
+        hasChildren: 'hasChildren'
+      },
+      list: [],
+      showId: '',
       listLoading: false,
       listTotal: 10,
       tableTotal: [
@@ -267,6 +308,15 @@ export default {
   },
   created() {
     this.query()
+  },
+  watch: {
+    $route(to, from) {
+      this.filterForm.period = to.query.period
+      this.showId = to.query.showId
+      this.filterForm.superId = to.query.superId
+      this.underCountTotal = to.query.underCountTotal
+      this.query()
+    }
   },
   methods: {
     query() {
@@ -346,7 +396,8 @@ export default {
       })
     },
     handleClick(data) {
-      this.$router.push({ path: '/spread/underAgentRecord', query: { superId: data.showId, period: data.period }})
+      console.log(data)
+      this.$router.push({ path: '/spread/agentRecord', query: { superId: data.userId, showId: data.showId, period: data.period, underCountTotal: data.underCount }})
     },
     handleSizeChange(val) {
       this.filterForm.pageSize = val

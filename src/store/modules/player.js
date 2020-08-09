@@ -75,6 +75,15 @@ const player = {
         })
       })
     },
+    ListOnlineTotalGold({ commit }, query) {
+      return new Promise((resolve, reject) => {
+        PlayerApi.listOnlineTotalGold(query).then(resp => {
+          resolve(resp)
+        }).catch(err => {
+          reject(err)
+        })
+      })
+    },
     UpdatePlayerLuckyRatio({ commit }, data) {
       return new Promise((resolve, reject) => {
         PlayerApi.updatePlayerLuckyRatio(data).then(resp => {
@@ -178,6 +187,15 @@ const player = {
     GetPlayerAccountById({ commit }, playerId) {
       return new Promise((resolve, reject) => {
         PlayerApi.getPlayerAccountById(playerId).then(resp => {
+          resolve(resp)
+        }).catch(err => {
+          reject(err)
+        })
+      })
+    },
+    AgentTree({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        PlayerApi.agentTree(data).then(resp => {
           resolve(resp)
         }).catch(err => {
           reject(err)
