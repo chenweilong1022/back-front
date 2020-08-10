@@ -4,30 +4,72 @@
     style="width: 100%;margin-bottom: 20px;"
     row-key="showId"
     border
+    size="mini"
+    fit
+    highlight-current-row
     :tree-props="{children: 'childrens', hasChildren: 'hasChildren'}">
     <el-table-column
       prop="showId"
       label="showId"
       sortable
-      width="180">
+      >
     </el-table-column>
     <el-table-column
       prop="nickname"
       label="用户名称"
       sortable
-      width="180">
+      >
     </el-table-column>
     <el-table-column
       prop="count"
       label="直属人数"
       sortable
-      width="180">
+      >
     </el-table-column>
     <el-table-column
       prop="teamCount"
       label="团队人数"
       sortable
-      width="180">
+      >
+    </el-table-column>
+    <el-table-column
+      prop="rechargePrice"
+      label="本人充值"
+      sortable
+      >
+    </el-table-column>
+    <el-table-column
+      prop="underRechargePrice"
+      label="直属充值"
+      sortable
+      >
+    </el-table-column>
+    <el-table-column
+      prop="teamRechargePrice"
+      label="团队充值"
+      sortable
+      >
+    </el-table-column>
+
+    <el-table-column
+      prop="withdrawAmount"
+      label="提现金额"
+      sortable
+      >
+    </el-table-column>
+
+    <el-table-column
+      prop="underWithdrawAmount"
+      label="直属提现"
+      sortable
+      >
+    </el-table-column>
+
+    <el-table-column
+      prop="teamWithdrawAmount"
+      label="团队提现"
+      sortable
+      >
     </el-table-column>
   </el-table>
 </template>

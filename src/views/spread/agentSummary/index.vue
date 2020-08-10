@@ -2,6 +2,11 @@
   <div class="app-container">
     <div class="filter-container">
       <el-form ref="filterForm" :inline="true" :model="filterForm" size="mini">
+
+        <el-form-item v-if="showId" label="上级id">
+          <label>{{ showId }}</label>
+        </el-form-item>
+
         <el-form-item label="用户ID">
           <el-input v-model="filterForm.showId"/>
         </el-form-item>
@@ -225,6 +230,7 @@ export default {
   },
   data() {
     return {
+      showId: null,
       filterForm: {
         showId: null,
         account: null,
@@ -243,6 +249,13 @@ export default {
   },
   created() {
     this.query()
+  },
+  watch: {
+    $route(to, from) {
+      this.filterForm.superId = to.query.superId
+      this.showId = to.query.showId
+      this.query()
+    }
   },
   methods: {
     query() {
@@ -300,7 +313,7 @@ export default {
       }
 
       // 总计
-      this.$store.dispatch('GetAgentRecordSummary', {}).then(resp => {
+      this.$store.dispatch('GetAgentRecordSummary', { ...this.filterForm }).then(resp => {
         const summary = resp.data
         const data = this.tableTotal[1]
 
@@ -314,13 +327,14 @@ export default {
         data.unlimitBonus = summary.unlimitBonus
         data.totalBonus = summary.totalBonus
         data.totalPerformance = summary.totalPerformance
+        data.totalAgentCount = summary.totalAgentCount
         this.listLoading = false
       }).catch(() => {
         this.listLoading = false
       })
     },
     handleClick(data) {
-      this.$router.push({ path: '/spread/underAgentSummary', query: { superId: data.showId }})
+      this.$router.push({ path: '/spread/agentSummary', query: { superId: data.userId, showId: data.showId }})
     },
     handleSizeChange(val) {
       this.filterForm.pageSize = val
